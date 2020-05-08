@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="textInput">
+        <!-- custom attributes -->
+        <attr name="backgroundColor" format="color" />
+        <attr name="textAppearance" format="reference" />
+        <attr name="selectorDefaultIcon" format="integer" />
+
+        <!-- standard attributes (android: prefix and no format attribute) -->
+        <attr name="android:digits" />
+        <attr name="android:inputType" />
+        <attr name="android:selectAllOnFocus" />
+        <attr name="android:hint" />
+        <attr name="android:imeOptions" />
+        <attr name="android:text" />
+
+    </declare-styleable>
+    
+</resources>

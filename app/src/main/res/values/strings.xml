@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">aiq.android</string>
+    <string name="text_input_hint">i am the textInput Hint!</string>
+</resources>

@@ -1,0 +1,3 @@
+rootProject.name='aiq.android'
+include ':app'
+include ':aiqinput'

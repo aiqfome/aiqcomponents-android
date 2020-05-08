@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AiqTheme" parent="Theme.MaterialComponents.Light">
+
+        <!-- Shapes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MaterialComponents.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MaterialComponents.LargeComponent</item>
+
+        <!-- InputEditText -->
+        <item name="textInputStyle">@style/TextInput</item>
+
+    </style>
+
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="background">@color/colorBackground</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeTextInput</item>
+    </style>
+
+    <style name="ShapeTextInput" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeTopRight">4dp</item>
+        <item name="cornerSizeBottomRight">4dp</item>
+    </style>
+
+    <style name="TextInputSelector" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeTextInputSelector</item>
+        <item name="cardBackgroundColor">@color/colorBackground</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="ShapeTextInputSelector" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">4dp</item>
+        <item name="cornerSizeBottomLeft">4dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="Selector" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeSelector</item>
+        <item name="cardBackgroundColor">@color/colorBackground</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="ShapeSelector" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
+
+</resources>
