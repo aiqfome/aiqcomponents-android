@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorBackground">#EEEEEE</color>
+    <color name="colorBackground">#CCCCCC</color>
+    <color name="colorDivider">#EEEEEE</color>
+    <color name="colorPrimaryText">#384745</color>
 </resources>

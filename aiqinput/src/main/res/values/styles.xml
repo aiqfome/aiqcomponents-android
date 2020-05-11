@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AiqTheme" parent="Theme.MaterialComponents.Light">
+    <style name="AiqTheme" parent="android:Theme">
 
         <!-- Shapes -->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
@@ -15,7 +15,7 @@
     <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
-        <item name="background">@color/colorBackground</item>
+        <item name="android:background">@color/colorBackground</item>
         <item name="shapeAppearanceOverlay">@style/ShapeTextInput</item>
     </style>
 

@@ -7,4 +7,5 @@
     <color name="colorError">#FF4F4B</color>
     <color name="colorBackground">#F7F7F7</color>
     <color name="colorPrimaryText">#384745</color>
+    <color name="colorBackgroundCard">#EEEEEE</color>
 </resources>
