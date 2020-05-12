@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         TextInputController countriesController = new TextInputController<Country>(
                 getSupportFragmentManager(),
                 "Countries",
-                countriesView) {
+                countriesView,
+                true,
+                true) {
 
             @Override
             public void onItemSelected(Country country) {
                 Toast.makeText(MainActivity.this, country.getName(), Toast.LENGTH_SHORT)
                         .show();
-
-                dismiss();
             }
         };
 
@@ -71,12 +71,11 @@ public class MainActivity extends AppCompatActivity {
         TextInputController colorsController = new TextInputController<Integer>(
                 getSupportFragmentManager(),
                 "Colors",
-                colorsView) {
+                colorsView,
+                false) {
 
             @Override
-            public void onItemSelected(Integer colorValue) {
-                dismiss();
-            }
+            public void onItemSelected(Integer colorValue) { }
         };
 
         binding.tiColorName.setup(colorsController);
