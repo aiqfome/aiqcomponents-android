@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aiqfome.aiqandroid.databinding.ActivityMainBinding;
-import com.aiqfome.aiqinput.IconSubTitleItem;
+import com.aiqfome.aiqinput.adapters.IconSubTitleItem;
+import com.aiqfome.aiqinput.adapters.SubTitleItem;
+import com.aiqfome.aiqinput.selector.SelectorController;
 import com.aiqfome.aiqinput.textinput.TextInputController;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         setupTextInputCountryPhone();
         setupTextInputColorAndName();
+        setupSelectorRegion();
+        setupSelectorCity();
     }
 
     private void setupTextInputCountryPhone() {
@@ -79,5 +83,65 @@ public class MainActivity extends AppCompatActivity {
         };
 
         binding.tiColorName.setup(colorsController);
+    }
+
+    private void setupSelectorRegion() {
+
+        List<Region> regionList = new ArrayList<>();
+        List<SubTitleItem<Region>> regionViews = new ArrayList<>();
+
+        regionList.add(new Region("Paraná", "PR"));
+        regionList.add(new Region("São Paulo", "SP"));
+        regionList.add(new Region("Mato Grosso", "MT"));
+
+        for (Region r : regionList)
+            regionViews.add(new SubTitleItem<>(r, r.getName(), r.getAcronym()));
+
+        SelectorController<Region> selectorController = new SelectorController<Region>(
+                getSupportFragmentManager(),
+                "Regions",
+                regionViews,
+                true,
+                true,
+                true
+                ) {
+
+            @Override
+            public void onItemSelected(Region object) {
+                Toast.makeText(MainActivity.this,
+                        "Region: " + object.getAcronym(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        binding.selectorRegion.setup(selectorController);
+    }
+
+    private void setupSelectorCity() {
+
+        List<Region> regionList = new ArrayList<>();
+        List<SubTitleItem<Region>> cityViews = new ArrayList<>();
+
+        regionList.add(new Region("Maringá", ""));
+        regionList.add(new Region("Curitiba", ""));
+        regionList.add(new Region("Rio de Janeiro", ""));
+
+        for (Region r : regionList)
+            cityViews.add(new SubTitleItem<>(r, r.getName(), r.getAcronym()));
+
+        SelectorController<Region> selectorController = new SelectorController<Region>(
+                getSupportFragmentManager(),
+                "Cities",
+                cityViews) {
+
+            @Override
+            public void onItemSelected(Region object) {
+                Toast.makeText(MainActivity.this,
+                        "City: " + object.getAcronym(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        binding.selectorCity.setup(selectorController);
     }
 }

@@ -6,8 +6,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
-import com.aiqfome.aiqinput.IconSubTitleAdapter;
-import com.aiqfome.aiqinput.IconSubTitleItem;
+import com.aiqfome.aiqinput.adapters.IconSubTitleAdapter;
+import com.aiqfome.aiqinput.adapters.IconSubTitleItem;
 import com.aiqfome.aiqinput.ListBottomSheet;
 
 import java.util.List;

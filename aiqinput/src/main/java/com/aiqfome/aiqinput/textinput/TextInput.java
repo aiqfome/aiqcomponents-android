@@ -119,7 +119,7 @@ public class TextInput extends ConstraintLayout {
                 }
 
             } else {
-                Log.d("aiqInput", "Unknown attribute for " + getClass().toString() + ": " + attr);
+                Log.d(TAG, "Unknown attribute for " + getClass().toString() + ": " + attr);
             }
         }
 

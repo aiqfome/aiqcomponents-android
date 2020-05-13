@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="Selector">
+        <!-- custom attributes -->
+        <attr name="selectorBackgroundColor" format="color" />
+        <attr name="selectorTextAppearance" format="reference" />
+        <attr name="selectorTitle" format="string" />
+
+    </declare-styleable>
+
     <declare-styleable name="TextInput">
         <!-- custom attributes -->
         <attr name="backgroundColor" format="color" />
@@ -15,5 +23,5 @@
         <attr name="android:text" />
 
     </declare-styleable>
-    
+
 </resources>

@@ -42,11 +42,11 @@
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
-    <style name="Selector" parent="Widget.MaterialComponents.CardView">
+    <style name="Selector" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="shapeAppearanceOverlay">@style/ShapeSelector</item>
-        <item name="cardBackgroundColor">@color/colorBackground</item>
-        <item name="strokeWidth">0dp</item>
-        <item name="cardElevation">0dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:background">@color/colorBackground</item>
     </style>
 
     <style name="ShapeSelector" parent="ShapeAppearance.MaterialComponents.MediumComponent">

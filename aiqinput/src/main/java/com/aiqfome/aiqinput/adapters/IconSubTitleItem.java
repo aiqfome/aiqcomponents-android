@@ -1,4 +1,4 @@
-package com.aiqfome.aiqinput;
+package com.aiqfome.aiqinput.adapters;
 
 import android.graphics.drawable.Drawable;
 
