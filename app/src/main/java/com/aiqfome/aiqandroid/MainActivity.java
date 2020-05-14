@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 regionViews,
                 true,
                 true,
+                true,
                 true
                 ) {
 
@@ -132,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
         SelectorController<Region> selectorController = new SelectorController<Region>(
                 getSupportFragmentManager(),
                 "Cities",
-                cityViews) {
+                cityViews,
+                true) {
 
             @Override
             public void onItemSelected(Region object) {

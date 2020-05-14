@@ -3,11 +3,15 @@ package com.aiqfome.aiqinput.selector;
 import android.os.Handler;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiqfome.aiqinput.adapters.BaseItem;
 import com.aiqfome.aiqinput.adapters.CommonAdapter;
+import com.aiqfome.aiqinput.adapters.CommonSearchableAdapter;
 import com.aiqfome.aiqinput.sheets.ListBottomSheet;
+import com.aiqfome.aiqinput.sheets.SearchableListBottomSheet;
 
 import java.util.List;
 
@@ -28,6 +32,11 @@ public abstract class SelectorController<Type> {
     private CommonAdapter adapter;
     private ListBottomSheet listBottomSheet;
 
+    private CommonSearchableAdapter searchableAdapter;
+    private SearchableListBottomSheet searchableListBottomSheet;
+
+    private boolean isSearchable = false;
+
     public SelectorController(FragmentManager fragmentManager,
                               String title,
                               List<BaseItem<Type>> itemList) {
@@ -42,12 +51,12 @@ public abstract class SelectorController<Type> {
     public SelectorController(FragmentManager fragmentManager,
                               String title,
                               List<BaseItem<Type>> itemList,
-                              boolean displaySelectedSubtitle) {
+                              boolean isSearchable) {
 
         this.fragmentManager = fragmentManager;
         this.title = title;
         this.itemList = itemList;
-        this.displaySelectedSubtitle = displaySelectedSubtitle;
+        this.isSearchable = isSearchable;
 
         setup();
     }
@@ -55,14 +64,14 @@ public abstract class SelectorController<Type> {
     public SelectorController(FragmentManager fragmentManager,
                               String title,
                               List<BaseItem<Type>> itemList,
-                              boolean shouldDismissOnSelect,
-                              boolean isFirstItemPreSelected) {
+                              boolean displaySelectedSubtitle,
+                              boolean isSearchable) {
 
         this.fragmentManager = fragmentManager;
         this.title = title;
         this.itemList = itemList;
-        this.shouldDismissOnSelect = shouldDismissOnSelect;
-        this.isFirstItemPreSelected = isFirstItemPreSelected;
+        this.displaySelectedSubtitle = displaySelectedSubtitle;
+        this.isSearchable = isSearchable;
 
         setup();
     }
@@ -72,7 +81,25 @@ public abstract class SelectorController<Type> {
                               List<BaseItem<Type>> itemList,
                               boolean shouldDismissOnSelect,
                               boolean isFirstItemPreSelected,
-                              boolean displaySelectedSubtitle) {
+                              boolean isSearchable) {
+
+        this.fragmentManager = fragmentManager;
+        this.title = title;
+        this.itemList = itemList;
+        this.shouldDismissOnSelect = shouldDismissOnSelect;
+        this.isFirstItemPreSelected = isFirstItemPreSelected;
+        this.isSearchable = isSearchable;
+
+        setup();
+    }
+
+    public SelectorController(FragmentManager fragmentManager,
+                              String title,
+                              List<BaseItem<Type>> itemList,
+                              boolean shouldDismissOnSelect,
+                              boolean isFirstItemPreSelected,
+                              boolean displaySelectedSubtitle,
+                              boolean isSearchable) {
 
         this.fragmentManager = fragmentManager;
         this.title = title;
@@ -80,24 +107,46 @@ public abstract class SelectorController<Type> {
         this.shouldDismissOnSelect = shouldDismissOnSelect;
         this.isFirstItemPreSelected = isFirstItemPreSelected;
         this.displaySelectedSubtitle = displaySelectedSubtitle;
+        this.isSearchable = isSearchable;
 
         setup();
     }
 
     private void setup() {
-        adapter = new CommonAdapter<Type>() {
-            @Override
-            public View.OnClickListener itemClickListener(BaseItem<Type> item) {
-                return v -> {
-                    selectItem(item);
-                    if (shouldDismissOnSelect) dismiss();
-                };
-            }
-        };
 
-        adapter.setBaseItemList(itemList);
+        if (isSearchable) {
 
-        listBottomSheet = new ListBottomSheet(title, adapter);
+            searchableAdapter = new CommonSearchableAdapter<Type>() {
+                @Override
+                public View.OnClickListener itemClickListener(BaseItem<Type> item) {
+                    return v -> {
+                        selectItem(item);
+                        if (shouldDismissOnSelect) dismiss();
+                    };
+                }
+            };
+
+            searchableAdapter.setBaseItemList(itemList);
+
+            searchableListBottomSheet = new SearchableListBottomSheet(title, searchableAdapter);
+
+        } else {
+
+            adapter = new CommonAdapter<Type>() {
+                @Override
+                public View.OnClickListener itemClickListener(BaseItem<Type> item) {
+                    return v -> {
+                        selectItem(item);
+                        if (shouldDismissOnSelect) dismiss();
+                    };
+                }
+            };
+
+            adapter.setBaseItemList(itemList);
+
+            listBottomSheet = new ListBottomSheet(title, adapter);
+        }
+
     }
 
     private void selectItem(BaseItem<Type> item) {
@@ -116,13 +165,24 @@ public abstract class SelectorController<Type> {
         if (isFirstItemPreSelected && !itemList.isEmpty()) selectItem(itemList.get(0));
     }
 
-    public void show() {
-        if (!listBottomSheet.isAdded())
-            listBottomSheet.show(fragmentManager, title + " listBottomSheet");
+    void show() {
+        if (isSearchable) {
+            if (!searchableListBottomSheet.isAdded())
+                searchableListBottomSheet.show(fragmentManager,
+                        title + "searchableListBottomSheet");
+        } else {
+            if (!listBottomSheet.isAdded())
+                listBottomSheet.show(fragmentManager, title + " listBottomSheet");
+        }
     }
 
     public void dismiss() {
-        new Handler().postDelayed(() -> listBottomSheet.dismissAllowingStateLoss(), 200);
+        if (isSearchable)
+            new Handler().postDelayed(() -> searchableListBottomSheet.dismissAllowingStateLoss(),
+                    200);
+        else
+            new Handler().postDelayed(() -> listBottomSheet.dismissAllowingStateLoss(),
+                    200);
     }
 
     public List<BaseItem<Type>> getItemList() {
@@ -133,11 +193,4 @@ public abstract class SelectorController<Type> {
         return selectedItem;
     }
 
-    public CommonAdapter getAdapter() {
-        return adapter;
-    }
-
-    public ListBottomSheet getListBottomSheet() {
-        return listBottomSheet;
-    }
 }

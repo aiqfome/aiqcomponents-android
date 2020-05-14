@@ -10,6 +10,9 @@
         <!-- InputEditText -->
         <item name="textInputStyle">@style/TextInput</item>
 
+        <!-- Bottom Sheet -->
+        <item name="bottomSheetDialogTheme">@style/aiq.BottomSheet</item>
+
     </style>
 
     <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
@@ -52,6 +55,25 @@
     <style name="ShapeSelector" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>
+    </style>
+
+    <style name="aiq.BottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/aiq.BottomSheet.style</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="aiq.BottomSheet.style" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/RoundedBottomSheet</item>
+    </style>
+
+    <style name="RoundedBottomSheet" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
 </resources>

@@ -47,7 +47,7 @@
         android:id="@+id/input"
         style="@style/TextInput"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="0dp"
         android:clipChildren="false"
         android:clipToPadding="false"
