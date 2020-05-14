@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aiqfome.aiqandroid.databinding.ActivityMainBinding;
-import com.aiqfome.aiqinput.adapters.IconSubTitleItem;
-import com.aiqfome.aiqinput.adapters.SubTitleItem;
+import com.aiqfome.aiqinput.adapters.BaseItem;
+import com.aiqfome.aiqinput.adapters.IconItem;
 import com.aiqfome.aiqinput.selector.SelectorController;
 import com.aiqfome.aiqinput.textinput.TextInputController;
 
@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         countries.add(new Country(getResources().getDrawable(R.drawable.ic_flag_cl),
                 "+56", "Chile"));
 
-        List<IconSubTitleItem<Country>> countriesView = new ArrayList<>();
+        List<IconItem<Country>> countriesView = new ArrayList<>();
 
         for (Country c : countries)
-            countriesView.add(new IconSubTitleItem<>(c, c.getName(), c.getIcon(), c.getIdd()));
+            countriesView.add(new IconItem<>(c, c.getName(), c.getIdd(), c.getIcon()));
 
         TextInputController countriesController = new TextInputController<Country>(
                 getSupportFragmentManager(),
@@ -64,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupTextInputColorAndName() {
 
-        List<IconSubTitleItem<Integer>> colorsView = new ArrayList<>();
+        List<IconItem<Integer>> colorsView = new ArrayList<>();
 
-        colorsView.add(new IconSubTitleItem<>(1, "Blue",
+        colorsView.add(new IconItem<>(1, "Blue",
                 getResources().getDrawable(R.drawable.ic_blue)));
 
-        colorsView.add(new IconSubTitleItem<>(2, "Red",
+        colorsView.add(new IconItem<>(2, "Red",
                 getResources().getDrawable(R.drawable.ic_red)));
 
         TextInputController colorsController = new TextInputController<Integer>(
@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity {
     private void setupSelectorRegion() {
 
         List<Region> regionList = new ArrayList<>();
-        List<SubTitleItem<Region>> regionViews = new ArrayList<>();
+        List<BaseItem<Region>> regionViews = new ArrayList<>();
 
         regionList.add(new Region("Paraná", "PR"));
         regionList.add(new Region("São Paulo", "SP"));
         regionList.add(new Region("Mato Grosso", "MT"));
 
         for (Region r : regionList)
-            regionViews.add(new SubTitleItem<>(r, r.getName(), r.getAcronym()));
+            regionViews.add(new BaseItem<>(r, r.getName(), r.getAcronym()));
 
         SelectorController<Region> selectorController = new SelectorController<Region>(
                 getSupportFragmentManager(),
@@ -120,14 +120,14 @@ public class MainActivity extends AppCompatActivity {
     private void setupSelectorCity() {
 
         List<Region> regionList = new ArrayList<>();
-        List<SubTitleItem<Region>> cityViews = new ArrayList<>();
+        List<BaseItem<Region>> cityViews = new ArrayList<>();
 
         regionList.add(new Region("Maringá", ""));
         regionList.add(new Region("Curitiba", ""));
         regionList.add(new Region("Rio de Janeiro", ""));
 
         for (Region r : regionList)
-            cityViews.add(new SubTitleItem<>(r, r.getName(), r.getAcronym()));
+            cityViews.add(new BaseItem<>(r, r.getName(), r.getAcronym()));
 
         SelectorController<Region> selectorController = new SelectorController<Region>(
                 getSupportFragmentManager(),

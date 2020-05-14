@@ -10,7 +10,8 @@
 
     <declare-styleable name="TextInput">
         <!-- custom attributes -->
-        <attr name="backgroundColor" format="color" />
+        <attr name="TextInputSelectorbackgroundColor" format="color" />
+        <attr name="TextInputbackgroundColor" format="color" />
         <attr name="textAppearance" format="reference" />
         <attr name="selectorDefaultIcon" format="integer" />
 

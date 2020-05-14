@@ -1,26 +1,21 @@
 package com.aiqfome.aiqinput.adapters;
 
-import android.graphics.drawable.Drawable;
-
-public class IconSubTitleItem<Type> {
+public class BaseItem<Type> {
 
     private Type object;
 
     private String title;
-    private Drawable icon;
     private String subTitle;
 
-    public IconSubTitleItem(Type object, String title, Drawable icon, String subTitle) {
+    public BaseItem(Type object, String title, String subTitle) {
         this.object = object;
         this.title = title;
-        this.icon = icon;
         this.subTitle = subTitle;
     }
 
-    public IconSubTitleItem(Type object, String title, Drawable icon) {
+    public BaseItem(Type object, String title) {
         this.object = object;
         this.title = title;
-        this.icon = icon;
     }
 
     public Type getObject() {
@@ -31,9 +26,6 @@ public class IconSubTitleItem<Type> {
         return title;
     }
 
-    public Drawable getIcon() {
-        return icon;
-    }
 
     public String getSubTitle() {
         return subTitle != null ? subTitle : "";

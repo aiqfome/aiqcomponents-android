@@ -5,9 +5,9 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentManager;
 
-import com.aiqfome.aiqinput.ListBottomSheet;
-import com.aiqfome.aiqinput.adapters.SubTitleAdapter;
-import com.aiqfome.aiqinput.adapters.SubTitleItem;
+import com.aiqfome.aiqinput.adapters.BaseItem;
+import com.aiqfome.aiqinput.adapters.CommonAdapter;
+import com.aiqfome.aiqinput.sheets.ListBottomSheet;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public abstract class SelectorController<Type> {
 
     private FragmentManager fragmentManager;
     private String title;
-    private List<SubTitleItem<Type>> itemList;
+    private List<BaseItem<Type>> itemList;
 
     private boolean shouldDismissOnSelect = true;
     private boolean isFirstItemPreSelected = false;
@@ -25,12 +25,12 @@ public abstract class SelectorController<Type> {
 
     private Type selectedItem;
 
-    private SubTitleAdapter adapter;
+    private CommonAdapter adapter;
     private ListBottomSheet listBottomSheet;
 
     public SelectorController(FragmentManager fragmentManager,
                               String title,
-                              List<SubTitleItem<Type>> itemList) {
+                              List<BaseItem<Type>> itemList) {
 
         this.fragmentManager = fragmentManager;
         this.title = title;
@@ -41,7 +41,7 @@ public abstract class SelectorController<Type> {
 
     public SelectorController(FragmentManager fragmentManager,
                               String title,
-                              List<SubTitleItem<Type>> itemList,
+                              List<BaseItem<Type>> itemList,
                               boolean displaySelectedSubtitle) {
 
         this.fragmentManager = fragmentManager;
@@ -54,7 +54,7 @@ public abstract class SelectorController<Type> {
 
     public SelectorController(FragmentManager fragmentManager,
                               String title,
-                              List<SubTitleItem<Type>> itemList,
+                              List<BaseItem<Type>> itemList,
                               boolean shouldDismissOnSelect,
                               boolean isFirstItemPreSelected) {
 
@@ -69,7 +69,7 @@ public abstract class SelectorController<Type> {
 
     public SelectorController(FragmentManager fragmentManager,
                               String title,
-                              List<SubTitleItem<Type>> itemList,
+                              List<BaseItem<Type>> itemList,
                               boolean shouldDismissOnSelect,
                               boolean isFirstItemPreSelected,
                               boolean displaySelectedSubtitle) {
@@ -85,9 +85,9 @@ public abstract class SelectorController<Type> {
     }
 
     private void setup() {
-        adapter = new SubTitleAdapter<Type>(itemList) {
+        adapter = new CommonAdapter<Type>() {
             @Override
-            public View.OnClickListener itemClickListener(SubTitleItem<Type> item) {
+            public View.OnClickListener itemClickListener(BaseItem<Type> item) {
                 return v -> {
                     selectItem(item);
                     if (shouldDismissOnSelect) dismiss();
@@ -95,10 +95,12 @@ public abstract class SelectorController<Type> {
             }
         };
 
+        adapter.setBaseItemList(itemList);
+
         listBottomSheet = new ListBottomSheet(title, adapter);
     }
 
-    private void selectItem(SubTitleItem<Type> item) {
+    private void selectItem(BaseItem<Type> item) {
         if (selector != null)
             selector.setSelectedItem(displaySelectedSubtitle ? item.getSubTitle() : item.getTitle());
 
@@ -123,7 +125,7 @@ public abstract class SelectorController<Type> {
         new Handler().postDelayed(() -> listBottomSheet.dismissAllowingStateLoss(), 200);
     }
 
-    public List<SubTitleItem<Type>> getItemList() {
+    public List<BaseItem<Type>> getItemList() {
         return itemList;
     }
 
@@ -131,7 +133,7 @@ public abstract class SelectorController<Type> {
         return selectedItem;
     }
 
-    public SubTitleAdapter getAdapter() {
+    public CommonAdapter getAdapter() {
         return adapter;
     }
 

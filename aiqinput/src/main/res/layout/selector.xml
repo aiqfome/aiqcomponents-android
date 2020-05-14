@@ -20,13 +20,13 @@
         android:minWidth="@dimen/min_selector_width"
         android:minHeight="@dimen/text_input_height"
         android:padding="0dp"
-        app:endIconDrawable="@drawable/ic_chevron_down"
         app:errorEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:drawableEnd="@drawable/ic_chevron_down"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:maxLines="1"

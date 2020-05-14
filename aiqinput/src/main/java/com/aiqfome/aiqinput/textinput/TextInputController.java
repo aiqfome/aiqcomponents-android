@@ -6,9 +6,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
-import com.aiqfome.aiqinput.adapters.IconSubTitleAdapter;
-import com.aiqfome.aiqinput.adapters.IconSubTitleItem;
-import com.aiqfome.aiqinput.ListBottomSheet;
+import com.aiqfome.aiqinput.adapters.CommonAdapter;
+import com.aiqfome.aiqinput.adapters.BaseItem;
+import com.aiqfome.aiqinput.adapters.IconItem;
+import com.aiqfome.aiqinput.sheets.ListBottomSheet;
 
 import java.util.List;
 
@@ -18,18 +19,18 @@ public abstract class TextInputController<Type> {
 
     private FragmentManager fragmentManager;
     private String title;
-    private List<IconSubTitleItem<Type>> itemList;
+    private List<IconItem<Type>> itemList;
     private boolean shouldDismissOnSelect = true;
     private boolean isFirstItemPreSelected = false;
 
     private Type selectedItem;
 
-    private IconSubTitleAdapter adapter;
+    private CommonAdapter adapter;
     private ListBottomSheet listBottomSheet;
 
     public TextInputController(@NonNull FragmentManager fragmentManager,
                                String title,
-                               @NonNull List<IconSubTitleItem<Type>> itemList,
+                               @NonNull List<IconItem<Type>> itemList,
                                boolean shouldDismissOnSelect,
                                boolean isFirstItemPreSelected) {
 
@@ -44,7 +45,7 @@ public abstract class TextInputController<Type> {
 
     public TextInputController(@NonNull FragmentManager fragmentManager,
                                String title,
-                               @NonNull List<IconSubTitleItem<Type>> itemList,
+                               @NonNull List<IconItem<Type>> itemList,
                                boolean shouldDismissOnSelect) {
 
         this.fragmentManager = fragmentManager;
@@ -57,7 +58,7 @@ public abstract class TextInputController<Type> {
 
     public TextInputController(@NonNull FragmentManager fragmentManager,
                                String title,
-                               @NonNull List<IconSubTitleItem<Type>> itemList) {
+                               @NonNull List<IconItem<Type>> itemList) {
 
         this.fragmentManager = fragmentManager;
         this.title = title;
@@ -66,21 +67,24 @@ public abstract class TextInputController<Type> {
         setup();
     }
 
+    //Icon Setup
     private void setup() {
-        adapter = new IconSubTitleAdapter<Type>(itemList) {
+        adapter = new CommonAdapter<Type>() {
             @Override
-            public View.OnClickListener itemClickListener(IconSubTitleItem<Type> item) {
+            public View.OnClickListener itemClickListener(BaseItem<Type> item) {
                 return v -> {
-                    selectItem(item);
+                    selectItem((IconItem<Type>) item);
                     if (shouldDismissOnSelect) dismiss();
                 };
             }
         };
 
+        adapter.setIconItemList(itemList);
+
         listBottomSheet = new ListBottomSheet(title, adapter);
     }
 
-    private void selectItem(IconSubTitleItem<Type> item) {
+    private void selectItem(IconItem<Type> item) {
         if (textInput != null) textInput.setSelectedItem(item.getIcon());
         selectedItem = item.getObject();
 
@@ -108,11 +112,11 @@ public abstract class TextInputController<Type> {
         return selectedItem;
     }
 
-    public List<IconSubTitleItem<Type>> getItemList() {
+    public List<IconItem<Type>> getItemList() {
         return itemList;
     }
 
-    public IconSubTitleAdapter getAdapter() {
+    public CommonAdapter getAdapter() {
         return adapter;
     }
 

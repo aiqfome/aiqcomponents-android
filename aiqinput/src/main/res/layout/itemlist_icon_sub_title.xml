@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.aiqfome.aiqinput.adapters.IconSubTitleItem" />
+            type="com.aiqfome.aiqinput.adapters.IconItem" />
     </data>
 
     <LinearLayout

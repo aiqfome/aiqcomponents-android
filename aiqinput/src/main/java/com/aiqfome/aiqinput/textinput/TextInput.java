@@ -54,8 +54,8 @@ public class TextInput extends ConstraintLayout {
     private void setupAttrs(Context context, @Nullable AttributeSet attrs) {
         if (attrs == null) return;
 
-        int defaultBackgroundColor = getResources().getColor(R.color.colorBackground);
-        selector.setCardBackgroundColor(defaultBackgroundColor);
+//        int defaultBackgroundColor = getResources().getColor(R.color.colorBackground);
+//        selector.setCardBackgroundColor(defaultBackgroundColor);
 
         TypedArray styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TextInput);
 
@@ -64,12 +64,19 @@ public class TextInput extends ConstraintLayout {
         for (int i = 0; i < attrsSize; i++) {
             int attr = styledAttributes.getIndex(i);
 
-            if (attr == R.styleable.TextInput_backgroundColor) {
+            if (attr == R.styleable.TextInput_TextInputSelectorbackgroundColor) {
                 if (styledAttributes.hasValue(attr)) {
                     int backgroundColor = styledAttributes
                             .getColor(attr, getResources().getColor(R.color.colorBackground));
 
                     selector.setCardBackgroundColor(backgroundColor);
+                }
+
+            } else if (attr == R.styleable.TextInput_TextInputbackgroundColor) {
+                if (styledAttributes.hasValue(attr)) {
+                    int backgroundColor = styledAttributes
+                            .getColor(attr, getResources().getColor(R.color.colorBackground));
+
                     input.setBackgroundColor(backgroundColor);
                 }
 

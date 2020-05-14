@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewObject"
-            type="com.aiqfome.aiqinput.adapters.SubTitleItem" />
+            type="com.aiqfome.aiqinput.adapters.BaseItem" />
     </data>
 
     <LinearLayout

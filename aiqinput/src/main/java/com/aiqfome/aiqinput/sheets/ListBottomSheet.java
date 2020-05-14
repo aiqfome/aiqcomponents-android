@@ -1,4 +1,4 @@
-package com.aiqfome.aiqinput;
+package com.aiqfome.aiqinput.sheets;
 
 import android.os.Bundle;
 import android.util.Log;
