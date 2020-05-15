@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aiqfome.aiqinput.R;
 import com.aiqfome.aiqinput.databinding.LayoutBottomSheetListBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -24,6 +25,8 @@ public class ListBottomSheet extends BottomSheetDialogFragment {
     public ListBottomSheet(String title, RecyclerView.Adapter adapter) {
         this.title = title;
         this.adapter = adapter;
+
+        this.setStyle(STYLE_NORMAL, R.style.aiq_BottomSheet);
     }
 
     @Nullable
