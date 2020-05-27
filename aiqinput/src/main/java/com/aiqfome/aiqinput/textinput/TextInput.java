@@ -24,7 +24,7 @@ public class TextInput extends ConstraintLayout {
     private static final String TAG = TextInput.class.getSimpleName();
 
     private TextInputController controller;
-    
+
     private MaterialCardView selector;
     private TextInputEditText input;
     private TextInputLayout inputLayout;
@@ -123,6 +123,13 @@ public class TextInput extends ConstraintLayout {
                     String text = styledAttributes.getString(attr);
 
                     if (text != null) input.setText(text);
+                }
+
+            } else if (attr == R.styleable.TextInput_android_textSize) {
+                if (styledAttributes.hasValue(attr)) {
+                    float textSize = styledAttributes.getDimension(attr, 0);
+
+                    if (textSize > 0) input.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
                 }
 
             } else {
