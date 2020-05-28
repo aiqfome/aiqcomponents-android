@@ -10,6 +10,10 @@
     <img alt="Made by AiqFome" src="https://img.shields.io/badge/made%20by-aiqfome-blueviolet">
   </a>
 
+  <a href="https://jitpack.io/#aiqfome/aiqInput" style="text-decoration:none" target="_blank">
+    <img alt="Last version in JitPack" src="https://jitpack.io/v/aiqfome/aiqInput.svg">
+  </a>
+
   <img alt="Last Commit" src="https://img.shields.io/github/last-commit/aiqfome/aiqInput">
 
   <img alt="Contributors" src="https://img.shields.io/github/contributors/aiqfome/aiqInput">
