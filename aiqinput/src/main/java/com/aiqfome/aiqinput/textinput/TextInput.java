@@ -125,7 +125,7 @@ public class TextInput extends ConstraintLayout {
                     if (text != null) input.setText(text);
                 }
 
-            } else if (attr == R.styleable.TextInput_android_textSize) {
+            } else if (attr == R.styleable.TextInput_textSize) {
                 if (styledAttributes.hasValue(attr)) {
                     float textSize = styledAttributes.getDimension(attr, 0);
 
