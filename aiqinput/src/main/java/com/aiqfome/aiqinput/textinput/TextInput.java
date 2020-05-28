@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.aiqfome.aiqinput.R;
@@ -86,8 +87,12 @@ public class TextInput extends ConstraintLayout {
 
             } else if (attr == R.styleable.TextInput_selectorDefaultIcon) {
                 if (styledAttributes.hasValue(attr)) {
-                    Drawable defaultIcon = styledAttributes.getDrawable(attr);
-                    icon.setImageDrawable(defaultIcon);
+                    int drawableResId = styledAttributes.getResourceId(attr, -1);
+                    if (drawableResId > -1) {
+                        Drawable defaultIcon = AppCompatResources.getDrawable(getContext(), drawableResId);
+
+                        icon.setImageDrawable(defaultIcon);
+                    }
                 }
 
             } else if (attr == R.styleable.TextInput_android_digits) {

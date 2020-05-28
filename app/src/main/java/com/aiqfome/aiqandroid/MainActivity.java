@@ -2,6 +2,7 @@ package com.aiqfome.aiqandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -34,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupTextInputCountryPhone() {
-        countries.add(new Country(getResources().getDrawable(R.drawable.ic_flag_br),
+        countries.add(new Country(VectorDrawableCompat.
+                create(this.getResources(), R.drawable.ic_flag_br, this.getTheme()),
                 "+55", "Brazil"));
 
-        countries.add(new Country(getResources().getDrawable(R.drawable.ic_flag_cl),
+        countries.add(new Country(VectorDrawableCompat.
+                create(this.getResources(), R.drawable.ic_flag_cl, this.getTheme()),
                 "+56", "Chile"));
 
         List<IconItem<Country>> countriesView = new ArrayList<>();
@@ -65,12 +68,11 @@ public class MainActivity extends AppCompatActivity {
     private void setupTextInputColorAndName() {
 
         List<IconItem<Integer>> colorsView = new ArrayList<>();
+        colorsView.add(new IconItem<>(1, "Blue", VectorDrawableCompat.
+                create(this.getResources(), R.drawable.ic_blue, this.getTheme())));
 
-        colorsView.add(new IconItem<>(1, "Blue",
-                getResources().getDrawable(R.drawable.ic_blue)));
-
-        colorsView.add(new IconItem<>(2, "Red",
-                getResources().getDrawable(R.drawable.ic_red)));
+        colorsView.add(new IconItem<>(2, "Red", VectorDrawableCompat.
+                create(this.getResources(), R.drawable.ic_red, this.getTheme())));
 
         TextInputController colorsController = new TextInputController<Integer>(
                 getSupportFragmentManager(),
