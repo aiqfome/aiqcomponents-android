@@ -26,7 +26,6 @@
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawableEnd="@drawable/ic_chevron_down"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:maxLines="1"

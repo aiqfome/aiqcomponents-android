@@ -2,6 +2,7 @@ package com.aiqfome.aiqinput.selector;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.aiqfome.aiqinput.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -33,6 +35,9 @@ public class Selector extends LinearLayout {
         root = findViewById(R.id.root);
         inputLayout = findViewById(R.id.input_layout);
         editText = findViewById(R.id.et_input);
+        Drawable icChevronDown = VectorDrawableCompat.create(context.getResources(),
+                R.drawable.ic_chevron_down, context.getTheme());
+        editText.setCompoundDrawablesWithIntrinsicBounds(null, null, icChevronDown, null);
 
         setupAttrs(context, attrs);
 
