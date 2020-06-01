@@ -1,10 +1,10 @@
 package com.aiqfome.aiqinput.sheets;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,12 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiqfome.aiqinput.R;
-import com.aiqfome.aiqinput.databinding.LayoutBottomSheetListBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class ListBottomSheet extends BottomSheetDialogFragment {
-
-    LayoutBottomSheetListBinding binding;
 
     private String title;
     private RecyclerView.Adapter adapter;
@@ -35,17 +32,18 @@ public class ListBottomSheet extends BottomSheetDialogFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        binding = LayoutBottomSheetListBinding.inflate(inflater);
-        binding.title.setText(title);
+        View view = inflater.inflate(R.layout.layout_bottom_sheet_list, container, false);
 
-        binding.rvItems.setAdapter(adapter);
-        binding.rvItems.setNestedScrollingEnabled(true);
+        TextView title = (TextView) view.findViewById(R.id.title);
+        title.setText(this.title);
 
-        binding.rvItems.setLayoutManager(new LinearLayoutManager
+        RecyclerView rvItems = (RecyclerView) view.findViewById(R.id.rv_items);
+        rvItems.setAdapter(adapter);
+        rvItems.setNestedScrollingEnabled(true);
+        rvItems.setLayoutManager(new LinearLayoutManager
                 (getContext(), RecyclerView.VERTICAL, false));
 
-        binding.executePendingBindings();
-        return binding.getRoot();
+        return view;
     }
 
 }
