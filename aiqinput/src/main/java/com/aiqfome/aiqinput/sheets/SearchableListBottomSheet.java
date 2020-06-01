@@ -19,14 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiqfome.aiqinput.R;
 import com.aiqfome.aiqinput.adapters.CommonSearchableAdapter;
-import com.aiqfome.aiqinput.databinding.LayoutBottomSheetSearchableListBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SearchableListBottomSheet extends BottomSheetDialogFragment {
-
-//    LayoutBottomSheetSearchableListBinding binding;
 
     private String title;
     private CommonSearchableAdapter adapter;
