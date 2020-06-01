@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,14 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiqfome.aiqinput.R;
 import com.aiqfome.aiqinput.adapters.CommonSearchableAdapter;
-import com.aiqfome.aiqinput.databinding.LayoutBottomSheetSearchableListBinding;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class SearchableListBottomSheet extends BottomSheetDialogFragment {
-
-    LayoutBottomSheetSearchableListBinding binding;
 
     private String title;
     private CommonSearchableAdapter adapter;
@@ -44,19 +42,24 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        binding = LayoutBottomSheetSearchableListBinding.inflate(inflater);
-        binding.title.setText(title);
+        View view = inflater.inflate(R.layout.layout_bottom_sheet_searchable_list,
+                container, false);
 
-        binding.rvItems.setAdapter(adapter);
-        binding.rvItems.setNestedScrollingEnabled(true);
+        TextView title = view.findViewById(R.id.title);
+        title.setText(this.title);
 
-        binding.rvItems.setLayoutManager(
+        RecyclerView rvItems = view.findViewById(R.id.rv_items);
+        rvItems.setAdapter(adapter);
+        rvItems.setNestedScrollingEnabled(true);
+
+        rvItems.setLayoutManager(
                 new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL,
                 false)
         );
 
-        binding.svSearch.setOnSearchClickListener(v -> {
+        SearchView svSearch = view.findViewById(R.id.sv_search);
+        svSearch.setOnSearchClickListener(v -> {
             BottomSheetDialog d = dialog;
 
             FrameLayout bottomSheet = d.findViewById
@@ -66,7 +69,7 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
                 BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED);
         });
 
-        binding.svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapter.getFilter().filter(query);
@@ -80,8 +83,7 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
             }
         });
 
-        binding.executePendingBindings();
-        return binding.getRoot();
+        return view;
     }
 
 
