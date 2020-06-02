@@ -26,9 +26,13 @@
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:cursorVisible="false"
+            android:ellipsize="end"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:maxLines="1"
+            android:inputType="textNoSuggestions"
+            android:lines="1"
+            android:singleLine="true"
             android:textAppearance="@style/TextAppearance.aiq.BoldBody" />
 
     </com.google.android.material.textfield.TextInputLayout>
