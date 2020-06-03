@@ -65,6 +65,9 @@
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/nunito_font_bold"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
