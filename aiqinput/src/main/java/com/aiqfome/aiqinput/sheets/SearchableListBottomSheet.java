@@ -59,6 +59,16 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
         );
 
         SearchView svSearch = view.findViewById(R.id.sv_search);
+
+        // When clicked, remove the iconified property to make editable.
+        svSearch.setOnClickListener(view1 -> svSearch.setIconified(false));
+
+        // When input get out of focus, add the iconified property to respect UI behavior.
+        svSearch.setOnQueryTextFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus)
+                svSearch.setIconified(true);
+        });
+
         svSearch.setOnSearchClickListener(v -> {
             BottomSheetDialog d = dialog;
 
