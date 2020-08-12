@@ -28,6 +28,7 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
     private String title;
     private CommonSearchableAdapter adapter;
     private BottomSheetDialog dialog;
+    private SearchView svSearch;
 
     public SearchableListBottomSheet(String title, CommonSearchableAdapter adapter) {
         this.title = title;
@@ -58,7 +59,7 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
                 false)
         );
 
-        SearchView svSearch = view.findViewById(R.id.sv_search);
+        SearchView svSearch = this.svSearch = view.findViewById(R.id.sv_search);
 
         // When clicked, remove the iconified property to make editable.
         svSearch.setOnClickListener(view1 -> svSearch.setIconified(false));
@@ -109,6 +110,8 @@ public class SearchableListBottomSheet extends BottomSheetDialogFragment {
                 imm.hideSoftInputFromWindow
                         (this.getView().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
+
+        svSearch.setQuery("", true);
 
         super.onDismiss(dialog);
     }
