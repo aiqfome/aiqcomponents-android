@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.aiqfome.aiqandroid.databinding.ActivityMainBinding;
-import com.aiqfome.aiqinput.adapters.BaseItem;
-import com.aiqfome.aiqinput.adapters.IconItem;
-import com.aiqfome.aiqinput.selector.SelectorController;
-import com.aiqfome.aiqinput.textinput.TextInputController;
+import com.aiqfome.aiqcomponents.adapters.BaseItem;
+import com.aiqfome.aiqcomponents.adapters.IconItem;
+import com.aiqfome.aiqcomponents.selector.SelectorController;
+import com.aiqfome.aiqcomponents.textinput.TextInputController;
 
 import java.util.ArrayList;
 import java.util.List;

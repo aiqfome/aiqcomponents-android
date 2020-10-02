@@ -25,7 +25,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.aiqfome.aiqinput.textinput.TextInput
+            <com.aiqfome.aiqcomponents.textinput.TextInput
                 android:id="@+id/ti_country_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_title"
                 app:layout_constraintWidth_percent="0.7" />
 
-            <com.aiqfome.aiqinput.textinput.TextInput
+            <com.aiqfome.aiqcomponents.textinput.TextInput
                 android:id="@+id/ti_color_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 app:selectorDefaultIcon="@drawable/ic_color_default"
                 app:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <com.aiqfome.aiqinput.selector.Selector
+            <com.aiqfome.aiqcomponents.selector.Selector
                 android:id="@+id/selector_region"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 app:layout_constraintWidth_percent="0.3"
                 app:selectorTitle="region" />
 
-            <com.aiqfome.aiqinput.selector.Selector
+            <com.aiqfome.aiqcomponents.selector.Selector
                 android:id="@+id/selector_city"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
