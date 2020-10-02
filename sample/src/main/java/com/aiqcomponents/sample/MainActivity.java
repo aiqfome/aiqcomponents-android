@@ -1,4 +1,4 @@
-package com.aiqfome.aiqandroid;
+package com.aiqcomponents.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -7,7 +7,7 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.aiqfome.aiqandroid.databinding.ActivityMainBinding;
+import com.aiqcomponents.sample.databinding.ActivityMainBinding;
 import com.aiqfome.aiqcomponents.adapters.BaseItem;
 import com.aiqfome.aiqcomponents.adapters.IconItem;
 import com.aiqfome.aiqcomponents.selector.SelectorController;

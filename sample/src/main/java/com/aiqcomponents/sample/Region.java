@@ -1,4 +1,4 @@
-package com.aiqfome.aiqandroid;
+package com.aiqcomponents.sample;
 
 public class Region {
 

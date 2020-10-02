@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.aiqfome.aiqandroid"
+        applicationId "com.aiqcomponents.sample"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
