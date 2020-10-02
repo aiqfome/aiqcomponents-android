@@ -2,6 +2,6 @@
     <string name="app_name">aiqcomponents.sample</string>
 
     <string name="cellphone_hint">cellphone</string>
-    <string name="title">input samples</string>
+    <string name="title_inputs">input samples</string>
     <string name="color_and_name_hint">color and name</string>
 </resources>

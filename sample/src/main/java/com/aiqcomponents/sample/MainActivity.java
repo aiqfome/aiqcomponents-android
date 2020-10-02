@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        binding.tiCountryPhone.setup(countriesController);
+        binding.layoutInputsSample.tiCountryPhone.setup(countriesController);
     }
 
     private void setupTextInputColorAndName() {
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(Integer colorValue) { }
         };
 
-        binding.tiColorName.setup(colorsController);
+        binding.layoutInputsSample.tiColorName.setup(colorsController);
     }
 
     private void setupSelectorRegion() {
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        binding.selectorRegion.setup(selectorController);
+        binding.layoutInputsSample.selectorRegion.setup(selectorController);
     }
 
     private void setupSelectorCity() {
@@ -146,6 +146,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        binding.selectorCity.setup(selectorController);
+        binding.layoutInputsSample.selectorCity.setup(selectorController);
     }
 }
