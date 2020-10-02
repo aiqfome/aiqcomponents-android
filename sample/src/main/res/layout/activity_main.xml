@@ -7,70 +7,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:paddingLeft="40dp"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            tools:context=".MainActivity">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="input samples"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.aiqfome.aiqcomponents.textinput.TextInput
-                android:id="@+id/ti_country_phone"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="cellphone"
-                app:TextInputSelectorbackgroundColor="@color/colorDivider"
-                android:selectAllOnFocus="false"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title"
-                app:layout_constraintWidth_percent="0.7" />
+                android:layout_weight="0.15" />
 
-            <com.aiqfome.aiqcomponents.textinput.TextInput
-                android:id="@+id/ti_color_name"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="color and name"
-                android:selectAllOnFocus="false"
-                app:TextInputSelectorbackgroundColor="@color/colorDivider"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ti_country_phone"
-                app:layout_constraintWidth_percent="0.7"
-                app:selectorDefaultIcon="@drawable/ic_color_default"
-                app:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:layout_weight="0.7"
+                android:orientation="vertical"
+                tools:context=".MainActivity">
 
-            <com.aiqfome.aiqcomponents.selector.Selector
-                android:id="@+id/selector_region"
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+                <com.aiqfome.aiqcomponents.textinput.TextInput
+                    android:id="@+id/ti_country_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/cellphone_hint"
+                    android:selectAllOnFocus="false"
+                    app:TextInputSelectorbackgroundColor="@color/colorDivider" />
+
+                <com.aiqfome.aiqcomponents.textinput.TextInput
+                    android:id="@+id/ti_color_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:hint="@string/color_and_name_hint"
+                    android:selectAllOnFocus="false"
+                    app:TextInputSelectorbackgroundColor="@color/colorDivider"
+                    app:selectorDefaultIcon="@drawable/ic_color_default"
+                    app:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <com.aiqfome.aiqcomponents.selector.Selector
+                    android:id="@+id/selector_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:selectorTitle="region" />
+
+                <com.aiqfome.aiqcomponents.selector.Selector
+                    android:id="@+id/selector_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
+            </LinearLayout>
+
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ti_color_name"
-                app:layout_constraintWidth_percent="0.3"
-                app:selectorTitle="region" />
+                android:layout_weight="0.15" />
 
-            <com.aiqfome.aiqcomponents.selector.Selector
-                android:id="@+id/selector_city"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toEndOf="@id/selector_region"
-                app:layout_constraintTop_toBottomOf="@id/ti_color_name"
-                app:layout_constraintWidth_percent="0.5" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 </layout>

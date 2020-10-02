@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">aiq.android</string>
-    <string name="text_input_hint">i am the textInput Hint!</string>
+    <string name="app_name">aiqcomponents.sample</string>
+
+    <string name="cellphone_hint">cellphone</string>
+    <string name="title">input samples</string>
+    <string name="color_and_name_hint">color and name</string>
 </resources>
