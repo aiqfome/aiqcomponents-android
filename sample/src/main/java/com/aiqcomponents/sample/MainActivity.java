@@ -1,15 +1,15 @@
 package com.aiqcomponents.sample;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.aiqcomponents.sample.databinding.ActivityMainBinding;
 import com.aiqfome.aiqcomponents.adapters.BaseItem;
@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         setupSelectorRegion();
         setupSelectorCity();
 
-        binding.layoutButtonsSample.btnProgress.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgress));
+        binding.layoutButtonsSample.btnProgressLeft.setOnClickListener(v -> showProgressLeft(binding.layoutButtonsSample.btnProgressLeft));
+        binding.layoutButtonsSample.btnProgressCenter.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgressCenter));
     }
 
     private void setupTextInputCountryPhone() {
@@ -157,6 +158,21 @@ public class MainActivity extends AppCompatActivity {
         };
 
         binding.layoutInputsSample.selectorCity.setup(selectorController);
+    }
+
+    private void showProgressLeft(final Button button) {
+        DrawableButtonExtensionsKt.showProgress(button, progressParams -> {
+            progressParams.setButtonTextRes(R.string.loading);
+            progressParams.setProgressColor(Color.WHITE);
+            progressParams.setGravity(DrawableButton.GRAVITY_TEXT_START);
+            return Unit.INSTANCE;
+        });
+        button.setEnabled(false);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            button.setEnabled(true);
+            DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_left_text);
+        }, 3000);
     }
 
     private void showProgressCenter(final Button button) {
