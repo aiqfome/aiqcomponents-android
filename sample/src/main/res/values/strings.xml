@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">aiqcomponents.sample</string>
+
+    <string name="cellphone_hint">cellphone</string>
+    <string name="title_inputs">input samples</string>
+    <string name="color_and_name_hint">color and name</string>
+
+    <string name="title_buttons">buttons samples</string>
+    <string name="simple_button_text">simple button</string>
+
+    <string name="loading">loading</string>
+    <string name="progress_left_text">progress left</string>
+    <string name="progress_center_text">progress center</string>
+    <string name="progress_right_text">progress right</string>
+    <string name="progress_custom_text">progress custom</string>
+</resources>
