@@ -1,9 +1,0 @@
-<resources>
-    <style name="TextAppearance.BoldBody" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/nunito_font_family</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:letterSpacing">0</item>
-        <item name="android:textColor">@color/colorPrimaryText</item>
-    </style>
-
-</resources>
