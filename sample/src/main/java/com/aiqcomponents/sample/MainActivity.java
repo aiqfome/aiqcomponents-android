@@ -4,17 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.aiqcomponents.sample.databinding.ActivityMainBinding;
 import com.aiqfome.aiqcomponents.adapters.BaseItem;
 import com.aiqfome.aiqcomponents.adapters.IconItem;
+import com.aiqfome.aiqcomponents.progressbutton.DrawableButton;
+import com.aiqfome.aiqcomponents.progressbutton.DrawableButtonExtensionsKt;
 import com.aiqfome.aiqcomponents.selector.SelectorController;
 import com.aiqfome.aiqcomponents.textinput.TextInputController;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import kotlin.Unit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         setupTextInputColorAndName();
         setupSelectorRegion();
         setupSelectorCity();
+
+        binding.layoutButtonsSample.btnProgress.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgress));
     }
 
     private void setupTextInputCountryPhone() {
@@ -147,5 +157,19 @@ public class MainActivity extends AppCompatActivity {
         };
 
         binding.layoutInputsSample.selectorCity.setup(selectorController);
+    }
+
+    private void showProgressCenter(final Button button) {
+        DrawableButtonExtensionsKt.showProgress(button, progressParams -> {
+            progressParams.setProgressColor(Color.WHITE);
+            progressParams.setGravity(DrawableButton.GRAVITY_CENTER);
+            return Unit.INSTANCE;
+        });
+        button.setEnabled(false);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            button.setEnabled(true);
+            DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_center_text);
+        }, 3000);
     }
 }

@@ -6,4 +6,6 @@
     <string name="color_and_name_hint">color and name</string>
 
     <string name="title_buttons">buttons samples</string>
+    <string name="simple_button_text">simple button</string>
+    <string name="progress_center_text">progress center</string>
 </resources>
