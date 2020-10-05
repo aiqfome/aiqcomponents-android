@@ -12,4 +12,5 @@
     <string name="progress_left_text">progress left</string>
     <string name="progress_center_text">progress center</string>
     <string name="progress_right_text">progress right</string>
+    <string name="progress_custom_text">progress custom</string>
 </resources>

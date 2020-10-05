@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         binding.layoutButtonsSample.btnProgressLeft.setOnClickListener(v -> showProgressLeft(binding.layoutButtonsSample.btnProgressLeft));
         binding.layoutButtonsSample.btnProgressCenter.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgressCenter));
         binding.layoutButtonsSample.btnProgressRight.setOnClickListener(v -> showProgressRight(binding.layoutButtonsSample.btnProgressRight));
+        binding.layoutButtonsSample.btnProgressCustom.setOnClickListener(v -> showProgressCustom(binding.layoutButtonsSample.btnProgressCustom));
     }
 
     private void setupTextInputCountryPhone() {
@@ -201,6 +202,24 @@ public class MainActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             button.setEnabled(true);
             DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_right_text);
+        }, 3000);
+    }
+
+    private void showProgressCustom(final Button button) {
+        DrawableButtonExtensionsKt.showProgress(button, progressParams -> {
+            progressParams.setButtonTextRes(R.string.loading);
+            progressParams.setProgressColors(new int[] {Color.WHITE, Color.MAGENTA, Color.GREEN});
+            progressParams.setGravity(DrawableButton.GRAVITY_TEXT_END);
+            progressParams.setProgressRadiusRes(R.dimen.progressRadius);
+            progressParams.setProgressStrokeRes(R.dimen.progressStroke);
+            progressParams.setTextMarginRes(R.dimen.textMarginStyled);
+            return Unit.INSTANCE;
+        });
+        button.setEnabled(false);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            button.setEnabled(true);
+            DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_custom_text);
         }, 3000);
     }
 }

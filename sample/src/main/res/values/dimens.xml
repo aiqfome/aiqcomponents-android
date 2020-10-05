@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="progressRadius">10dp</dimen>
+    <dimen name="progressStroke">5dp</dimen>
+    <dimen name="textMarginStyled">20dp</dimen>
+
+</resources>
