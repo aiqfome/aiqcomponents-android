@@ -4,4 +4,6 @@
     <string name="cellphone_hint">cellphone</string>
     <string name="title_inputs">input samples</string>
     <string name="color_and_name_hint">color and name</string>
+
+    <string name="title_buttons">buttons samples</string>
 </resources>

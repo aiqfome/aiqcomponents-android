@@ -6,4 +6,12 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
+    <style name="aiq.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="shapeAppearance">@style/shapeRoundedButton</item>
+    </style>
+
+    <style name="shapeRoundedButton" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">19dp</item>
+    </style>
 </resources>
