@@ -41,5 +41,14 @@
             android:layout_margin="8dp"
             android:text="@string/progress_center_text" />
 
+        <Button
+            android:id="@+id/btn_progress_right"
+            style="@style/aiq.Button"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/progress_right_text" />
+
     </merge>
 </layout>

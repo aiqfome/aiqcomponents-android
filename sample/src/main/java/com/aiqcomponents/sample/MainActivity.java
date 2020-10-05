@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.layoutButtonsSample.btnProgressLeft.setOnClickListener(v -> showProgressLeft(binding.layoutButtonsSample.btnProgressLeft));
         binding.layoutButtonsSample.btnProgressCenter.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgressCenter));
+        binding.layoutButtonsSample.btnProgressRight.setOnClickListener(v -> showProgressRight(binding.layoutButtonsSample.btnProgressRight));
     }
 
     private void setupTextInputCountryPhone() {
@@ -186,6 +187,20 @@ public class MainActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             button.setEnabled(true);
             DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_center_text);
+        }, 3000);
+    }
+
+    private void showProgressRight(final Button button) {
+        DrawableButtonExtensionsKt.showProgress(button, progressParams -> {
+            progressParams.setButtonTextRes(R.string.loading);
+            progressParams.setProgressColor(Color.WHITE);
+            return Unit.INSTANCE;
+        });
+        button.setEnabled(false);
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            button.setEnabled(true);
+            DrawableButtonExtensionsKt.hideProgress(button, R.string.progress_right_text);
         }, 3000);
     }
 }
