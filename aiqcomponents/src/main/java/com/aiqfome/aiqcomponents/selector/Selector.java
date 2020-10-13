@@ -101,6 +101,18 @@ public class Selector extends LinearLayout {
         this.controller = controller;
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        super.setClickable(enabled);
+
+        inputLayout.setEnabled(enabled);
+        inputLayout.setClickable(enabled);
+
+        editText.setEnabled(enabled);
+        editText.setClickable(enabled);
+    }
+
     public void setSelectedItem(String itemText) {
         this.editText.setText(itemText);
     }

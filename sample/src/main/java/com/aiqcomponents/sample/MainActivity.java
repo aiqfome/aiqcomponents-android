@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         setupSelectorRegion();
         setupSelectorCity();
 
+        binding.layoutButtonsSample.simpleButton.setOnClickListener(v -> {
+            boolean enable = binding.layoutInputsSample.selectorRegion.isEnabled();
+            binding.layoutInputsSample.selectorRegion.setEnabled(!enable);
+        });
+
         binding.layoutButtonsSample.btnProgressLeft.setOnClickListener(v -> showProgressLeft(binding.layoutButtonsSample.btnProgressLeft));
         binding.layoutButtonsSample.btnProgressCenter.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgressCenter));
         binding.layoutButtonsSample.btnProgressRight.setOnClickListener(v -> showProgressRight(binding.layoutButtonsSample.btnProgressRight));
