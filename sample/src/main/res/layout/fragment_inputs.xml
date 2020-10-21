@@ -2,20 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutInputsRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-    android:id="@+id/layoutInputsRoot"
     tools:context=".fragments.InputsFragment">
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="@string/title_inputs"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
     <com.aiqfome.aiqcomponents.textinput.TextInput
         android:id="@+id/tiCountryPhone"

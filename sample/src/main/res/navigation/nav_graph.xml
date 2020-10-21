@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.aiqcomponents.sample.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="aiqcomponents"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_inputsFragment"
             app:destination="@id/inputsFragment"
@@ -26,11 +26,11 @@
     <fragment
         android:id="@+id/inputsFragment"
         android:name="com.aiqcomponents.sample.fragments.InputsFragment"
-        android:label="fragment_inputs"
+        android:label="input components"
         tools:layout="@layout/fragment_inputs" />
     <fragment
         android:id="@+id/loadingButtonsFragment"
         android:name="com.aiqcomponents.sample.fragments.LoadingButtonsFragment"
-        android:label="fragment_loading_buttons"
+        android:label="loading button components"
         tools:layout="@layout/fragment_loading_buttons" />
 </navigation>
