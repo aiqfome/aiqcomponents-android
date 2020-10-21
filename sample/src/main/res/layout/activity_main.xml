@@ -25,13 +25,6 @@
                 tools:context=".MainActivity">
 
                 <include
-                    android:id="@+id/layout_inputs_sample"
-                    layout="@layout/layout_inputs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp" />
-
-                <include
                     android:id="@+id/layout_buttons_sample"
                     layout="@layout/layout_buttons"
                     android:layout_width="match_parent"

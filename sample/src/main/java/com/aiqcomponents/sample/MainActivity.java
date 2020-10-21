@@ -12,6 +12,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.aiqcomponents.sample.databinding.ActivityMainBinding;
+import com.aiqcomponents.sample.models.Country;
+import com.aiqcomponents.sample.models.Region;
 import com.aiqfome.aiqcomponents.adapters.BaseItem;
 import com.aiqfome.aiqcomponents.adapters.IconItem;
 import com.aiqfome.aiqcomponents.progressbutton.DrawableButton;
@@ -26,8 +28,6 @@ import kotlin.Unit;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Country> countries = new ArrayList<>();
-
     ActivityMainBinding binding;
 
     @Override
@@ -36,136 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        setupTextInputCountryPhone();
-        setupTextInputColorAndName();
-        setupSelectorRegion();
-        setupSelectorCity();
-
-        binding.layoutButtonsSample.simpleButton.setOnClickListener(v -> {
-            boolean enable = binding.layoutInputsSample.selectorRegion.isEnabled();
-            binding.layoutInputsSample.selectorRegion.setEnabled(!enable);
-        });
-
         binding.layoutButtonsSample.btnProgressLeft.setOnClickListener(v -> showProgressLeft(binding.layoutButtonsSample.btnProgressLeft));
         binding.layoutButtonsSample.btnProgressCenter.setOnClickListener(v -> showProgressCenter(binding.layoutButtonsSample.btnProgressCenter));
         binding.layoutButtonsSample.btnProgressRight.setOnClickListener(v -> showProgressRight(binding.layoutButtonsSample.btnProgressRight));
         binding.layoutButtonsSample.btnProgressCustom.setOnClickListener(v -> showProgressCustom(binding.layoutButtonsSample.btnProgressCustom));
     }
 
-    private void setupTextInputCountryPhone() {
-        countries.add(new Country(VectorDrawableCompat.
-                create(this.getResources(), R.drawable.ic_flag_br, this.getTheme()),
-                "+55", "Brazil"));
 
-        countries.add(new Country(VectorDrawableCompat.
-                create(this.getResources(), R.drawable.ic_flag_cl, this.getTheme()),
-                "+56", "Chile"));
-
-        List<IconItem<Country>> countriesView = new ArrayList<>();
-
-        for (Country c : countries)
-            countriesView.add(new IconItem<>(c, c.getName(), c.getIdd(), c.getIcon()));
-
-        TextInputController countriesController = new TextInputController<Country>(
-                getSupportFragmentManager(),
-                "Countries",
-                countriesView,
-                true,
-                true) {
-
-            @Override
-            public void onItemSelected(Country country) {
-                Toast.makeText(MainActivity.this, country.getName(), Toast.LENGTH_SHORT)
-                        .show();
-            }
-        };
-
-        binding.layoutInputsSample.tiCountryPhone.setup(countriesController);
-    }
-
-    private void setupTextInputColorAndName() {
-
-        List<IconItem<Integer>> colorsView = new ArrayList<>();
-        colorsView.add(new IconItem<>(1, "Blue", VectorDrawableCompat.
-                create(this.getResources(), R.drawable.ic_blue, this.getTheme())));
-
-        colorsView.add(new IconItem<>(2, "Red", VectorDrawableCompat.
-                create(this.getResources(), R.drawable.ic_red, this.getTheme())));
-
-        TextInputController colorsController = new TextInputController<Integer>(
-                getSupportFragmentManager(),
-                "Colors",
-                colorsView,
-                false) {
-
-            @Override
-            public void onItemSelected(Integer colorValue) { }
-        };
-
-        binding.layoutInputsSample.tiColorName.setup(colorsController);
-    }
-
-    private void setupSelectorRegion() {
-
-        List<Region> regionList = new ArrayList<>();
-        List<BaseItem<Region>> regionViews = new ArrayList<>();
-
-        regionList.add(new Region("Paraná", "PR"));
-        regionList.add(new Region("São Paulo", "SP"));
-        regionList.add(new Region("Mato Grosso", "MT"));
-
-        for (Region r : regionList)
-            regionViews.add(new BaseItem<>(r, r.getName(), r.getAcronym()));
-
-        SelectorController<Region> selectorController = new SelectorController<Region>(
-                getSupportFragmentManager(),
-                "Regions",
-                regionViews,
-                true,
-                true,
-                true,
-                true
-                ) {
-
-            @Override
-            public void onItemSelected(Region object) {
-                Toast.makeText(MainActivity.this,
-                        "Region: " + object.getAcronym(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        binding.layoutInputsSample.selectorRegion.setup(selectorController);
-    }
-
-    private void setupSelectorCity() {
-
-        List<Region> regionList = new ArrayList<>();
-        List<BaseItem<Region>> cityViews = new ArrayList<>();
-
-        regionList.add(new Region("Maringá", ""));
-        regionList.add(new Region("Curitiba", ""));
-        regionList.add(new Region("Rio de Janeiro", ""));
-
-        for (Region r : regionList)
-            cityViews.add(new BaseItem<>(r, r.getName(), r.getAcronym()));
-
-        SelectorController<Region> selectorController = new SelectorController<Region>(
-                getSupportFragmentManager(),
-                "Cities",
-                cityViews,
-                true) {
-
-            @Override
-            public void onItemSelected(Region object) {
-                Toast.makeText(MainActivity.this,
-                        "City: " + object.getAcronym(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        binding.layoutInputsSample.selectorCity.setup(selectorController);
-    }
 
     private void showProgressLeft(final Button button) {
         DrawableButtonExtensionsKt.showProgress(button, progressParams -> {
