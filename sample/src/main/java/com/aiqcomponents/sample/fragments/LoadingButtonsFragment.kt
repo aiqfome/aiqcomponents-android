@@ -40,7 +40,7 @@ class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
 
     private fun showProgressLeft(button: Button) {
         button.showProgress {
-            ProgressParams().apply {
+            this.apply {
                 buttonTextRes = R.string.loading
                 progressColor = Color.WHITE
                 gravity = DrawableButton.GRAVITY_TEXT_START
@@ -55,7 +55,7 @@ class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
 
     private fun showProgressCenter(button: Button) {
         button.showProgress {
-            ProgressParams().apply {
+            this.apply {
                 progressColor = Color.WHITE
                 gravity = DrawableButton.GRAVITY_CENTER
             }
@@ -69,7 +69,7 @@ class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
 
     private fun showProgressRight(button: Button) {
         button.showProgress {
-            ProgressParams().apply {
+            this.apply {
                 buttonTextRes = R.string.loading
                 progressColor = Color.WHITE
             }
@@ -83,7 +83,7 @@ class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
 
     private fun showProgressCustom(button: Button) {
         button.showProgress {
-            ProgressParams().apply {
+            this.apply {
                 buttonTextRes = R.string.loading
                 progressColors = intArrayOf(Color.WHITE, Color.MAGENTA, Color.GREEN)
                 gravity = DrawableButton.GRAVITY_TEXT_END

@@ -30,9 +30,9 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
     }
 
     private fun setupTextInputCountryPhone() {
-        countries.add(Country(VectorDrawableCompat.create(this.resources, R.drawable.ic_flag_br, requireActivity().theme)!!,
+        countries.add(Country(VectorDrawableCompat.create(this.resources, R.drawable.ic_flag_br, activity?.theme)!!,
                 "+55", "Brazil"))
-        countries.add(Country(VectorDrawableCompat.create(this.resources, R.drawable.ic_flag_cl, requireActivity().theme)!!,
+        countries.add(Country(VectorDrawableCompat.create(this.resources, R.drawable.ic_flag_cl, activity?.theme)!!,
                 "+56", "Chile"))
         val countriesView: MutableList<IconItem<Country>> = ArrayList()
         for (c in countries) countriesView.add(IconItem(c, c.name, c.idd, c.icon))
@@ -62,7 +62,8 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
                 false) {
             override fun onItemSelected(colorValue: Int?) {}
         }
-        layoutInputsRoot.tiColorName.setup(colorsController)
+
+        layoutInputsRoot.tiColorName?.setup(colorsController)
     }
 
     private fun setupSelectorRegion() {
@@ -87,6 +88,7 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
                         Toast.LENGTH_SHORT).show()
             }
         }
+
         layoutInputsRoot.selectorRegion?.setup(selectorController)
     }
 
@@ -108,6 +110,7 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
                         Toast.LENGTH_SHORT).show()
             }
         }
+
         layoutInputsRoot.selectorCity?.setup(selectorController)
     }
 
