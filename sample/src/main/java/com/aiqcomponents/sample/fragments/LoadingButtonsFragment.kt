@@ -39,57 +39,64 @@ class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
     }
 
     private fun showProgressLeft(button: Button) {
-        button.showProgress { progressParams: ProgressParams ->
-            progressParams.buttonTextRes = R.string.loading
-            progressParams.progressColor = Color.WHITE
-            progressParams.gravity = DrawableButton.GRAVITY_TEXT_START
+        button.showProgress {
+            ProgressParams().apply {
+                buttonTextRes = R.string.loading
+                progressColor = Color.WHITE
+                gravity = DrawableButton.GRAVITY_TEXT_START
+            }
+            button.isEnabled = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                button.isEnabled = true
+                hideProgress(button, R.string.progress_left_text)
+            }, 3000)
         }
-        button.isEnabled = false
-        Handler(Looper.getMainLooper()).postDelayed({
-            button.isEnabled = true
-            hideProgress(button, R.string.progress_left_text)
-        }, 3000)
     }
 
     private fun showProgressCenter(button: Button) {
-        button.showProgress { progressParams: ProgressParams ->
-            progressParams.progressColor = Color.WHITE
-            progressParams.gravity = DrawableButton.GRAVITY_CENTER
+        button.showProgress {
+            ProgressParams().apply {
+                progressColor = Color.WHITE
+                gravity = DrawableButton.GRAVITY_CENTER
+            }
+            button.isEnabled = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                button.isEnabled = true
+                hideProgress(button, R.string.progress_center_text)
+            }, 3000)
         }
-        button.isEnabled = false
-        Handler(Looper.getMainLooper()).postDelayed({
-            button.isEnabled = true
-            hideProgress(button, R.string.progress_center_text)
-        }, 3000)
     }
 
     private fun showProgressRight(button: Button) {
-        button.showProgress { progressParams: ProgressParams ->
-            progressParams.buttonTextRes = R.string.loading
-            progressParams.progressColor = Color.WHITE
+        button.showProgress {
+            ProgressParams().apply {
+                buttonTextRes = R.string.loading
+                progressColor = Color.WHITE
+            }
+            button.isEnabled = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                button.isEnabled = true
+                hideProgress(button, R.string.progress_right_text)
+            }, 3000)
         }
-        button.isEnabled = false
-        Handler(Looper.getMainLooper()).postDelayed({
-            button.isEnabled = true
-            hideProgress(button, R.string.progress_right_text)
-        }, 3000)
     }
 
     private fun showProgressCustom(button: Button) {
-        button.showProgress { progressParams: ProgressParams ->
-            progressParams.buttonTextRes = R.string.loading
-            progressParams.progressColors = intArrayOf(Color.WHITE, Color.MAGENTA, Color.GREEN)
-            progressParams.gravity = DrawableButton.GRAVITY_TEXT_END
-            progressParams.progressRadiusRes = R.dimen.progressRadius
-            progressParams.progressStrokeRes = R.dimen.progressStroke
-            progressParams.textMarginRes = R.dimen.textMarginStyled
+        button.showProgress {
+            ProgressParams().apply {
+                buttonTextRes = R.string.loading
+                progressColors = intArrayOf(Color.WHITE, Color.MAGENTA, Color.GREEN)
+                gravity = DrawableButton.GRAVITY_TEXT_END
+                progressRadiusRes = R.dimen.progressRadius
+                progressStrokeRes = R.dimen.progressStroke
+                textMarginRes = R.dimen.textMarginStyled
+            }
+            button.isEnabled = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                button.isEnabled = true
+                hideProgress(button, R.string.progress_custom_text)
+            }, 3000)
         }
-        button.isEnabled = false
-        Handler(Looper.getMainLooper()).postDelayed({
-            button.isEnabled = true
-            hideProgress(button, R.string.progress_custom_text)
-        }, 3000)
     }
-
 
 }

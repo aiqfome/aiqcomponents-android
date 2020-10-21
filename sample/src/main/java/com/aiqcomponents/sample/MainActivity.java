@@ -28,14 +28,10 @@ import kotlin.Unit;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
-
+        setContentView(R.layout.activity_main);
     }
 }
