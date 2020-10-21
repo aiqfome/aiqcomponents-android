@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_inputsFragment"
-            app:destination="@id/inputsFragment" />
+            app:destination="@id/inputsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_homeFragment_to_loadingButtonsFragment"
-            app:destination="@id/loadingButtonsFragment" />
+            app:destination="@id/loadingButtonsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/inputsFragment"
