@@ -7,15 +7,8 @@
     android:id="@+id/layoutHomeRoot"
     tools:context=".fragments.HomeFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="18dp"
-        android:text="aiqcomponents" />
-
-
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="12dp"
         android:id="@+id/componentsRecyclerView"
         android:layout_width="match_parent"
         android:orientation="vertical"
