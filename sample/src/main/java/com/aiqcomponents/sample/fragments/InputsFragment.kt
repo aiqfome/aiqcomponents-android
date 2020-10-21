@@ -22,7 +22,7 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         setupTextInputCountryPhone()
         setupTextInputColorAndName()
         setupSelectorRegion()
@@ -110,5 +110,5 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
         }
         layoutInputsRoot.selectorCity?.setup(selectorController)
     }
-    
+
 }
