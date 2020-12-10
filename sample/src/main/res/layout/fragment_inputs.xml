@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutInputsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".fragments.InputsFragment">
+
+    <com.aiqfome.aiqcomponents.textinput.TextInput
+        android:id="@+id/tiCountryPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/cellphone_hint"
+        android:selectAllOnFocus="false"
+        app:TextInputSelectorbackgroundColor="@color/colorDivider" />
+
+    <com.aiqfome.aiqcomponents.textinput.TextInput
+        android:id="@+id/tiColorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/color_and_name_hint"
+        android:selectAllOnFocus="false"
+        app:TextInputSelectorbackgroundColor="@color/colorDivider"
+        app:selectorDefaultIcon="@drawable/ic_color_default"
+        app:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <com.aiqfome.aiqcomponents.selector.Selector
+        android:id="@+id/selectorRegion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:selectorTitle="region" />
+
+    <com.aiqfome.aiqcomponents.selector.Selector
+        android:id="@+id/selectorCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:selectorTitle="city" />
+
+</LinearLayout>

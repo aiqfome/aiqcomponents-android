@@ -20,9 +20,10 @@ import java.util.List;
 /**
  * Multi-purpose Adapter that can be used for both BaseItem and IconItem Lists!
  * And it implements  Filterable too?! :0
+ *
+ * @param <Type> When using this class you need to specify the Type of the Object of this adapter
  * @author Bruno Cesar, bcesar.g6@gmail.com
  * @since 14/05/2020
- * @param <Type> When using this class you need to specify the Type of the Object of this adapter
  */
 public abstract class CommonSearchableAdapter<Type>
         extends RecyclerView.Adapter<CommonSearchableAdapter.ItemViewHolder>
@@ -38,7 +39,8 @@ public abstract class CommonSearchableAdapter<Type>
 
     private ItemFilter filter = new ItemFilter();
 
-    protected CommonSearchableAdapter() { }
+    protected CommonSearchableAdapter() {
+    }
 
     public long getItemId(int position) {
         return position;
@@ -107,14 +109,23 @@ public abstract class CommonSearchableAdapter<Type>
 
             final ArrayList<Object> filteredlist = new ArrayList<>(count);
 
-            String filterableString ;
+            String filterableString;
+            String filterableSubtitleString;
 
             for (int i = 0; i < count; i++) {
                 filterableString = StringUtils.stripAccents(list.get(i).getTitle());
                 filterString = StringUtils.stripAccents(filterString.toLowerCase());
 
-                if (filterableString.toLowerCase().contains(filterString))
-                    filteredlist.add(list.get(i));
+                // If it's not an adapter list, we can search both title and subtitle.
+                if (!isIconAdapter) {
+                    filterableSubtitleString = StringUtils.stripAccents(list.get(i).getSubTitle());
+                    if (filterableString.toLowerCase().contains(filterString)
+                            || filterableSubtitleString.toLowerCase().contains(filterString))
+                        filteredlist.add(list.get(i));
+                } else {
+                    if (filterableString.toLowerCase().contains(filterString))
+                        filteredlist.add(list.get(i));
+                }
             }
 
             results.values = filteredlist;
