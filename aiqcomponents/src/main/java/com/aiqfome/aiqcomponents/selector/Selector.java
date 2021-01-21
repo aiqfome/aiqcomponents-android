@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import com.aiqfome.aiqcomponents.R;
@@ -35,6 +36,7 @@ public class Selector extends LinearLayout {
         root = findViewById(R.id.root);
         inputLayout = findViewById(R.id.input_layout);
         editText = findViewById(R.id.et_input);
+        editText.setKeyListener(null);
         Drawable icChevronDown = VectorDrawableCompat.create(context.getResources(),
                 R.drawable.ic_chevron_down, context.getTheme());
         editText.setCompoundDrawablesWithIntrinsicBounds(null, null, icChevronDown, null);
@@ -111,11 +113,17 @@ public class Selector extends LinearLayout {
 
         editText.setEnabled(enabled);
         editText.setClickable(enabled);
+
+        if (!enabled) {
+            int color = ContextCompat.getColor(getContext(), R.color.colorDivider);
+            editText.setBackgroundColor(color);
+        }
     }
 
     public void setSelectedItem(String itemText) {
         this.editText.setText(itemText);
     }
+
 
     public SelectorController getController() {
         return controller;
