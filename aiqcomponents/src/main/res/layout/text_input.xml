@@ -66,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_font_bold"
+            android:singleLine="true"
             android:textStyle="bold"
             android:textSize="20sp"
             android:maxLines="1" />

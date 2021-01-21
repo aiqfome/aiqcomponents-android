@@ -3,7 +3,9 @@ package com.aiqfome.aiqcomponents.textinput;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.text.method.DigitsKeyListener;
+import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -30,6 +32,7 @@ public class TextInput extends ConstraintLayout {
     private TextInputEditText input;
     private TextInputLayout inputLayout;
     private ImageView icon;
+    private KeyListener inputKeyListener;
 
     public TextInput(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -41,6 +44,8 @@ public class TextInput extends ConstraintLayout {
         input = findViewById(R.id.et_input);
         inputLayout = findViewById(R.id.input);
         icon = findViewById(R.id.iv_selected_icon);
+
+        inputKeyListener = input.getKeyListener();
 
         setupAttrs(context, attrs);
         setOnClickListener(onClickListener());
@@ -143,6 +148,27 @@ public class TextInput extends ConstraintLayout {
         }
 
         styledAttributes.recycle();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        this.input.setEnabled(enabled);
+        setEllipsized(!enabled);
+
+    }
+
+    private void setEllipsized(boolean enabled) {
+        this.input.setCursorVisible(!enabled);
+        if (enabled) {
+            this.input.setEllipsize(TextUtils.TruncateAt.END);
+            this.input.setKeyListener(null);
+
+            return;
+        }
+
+        this.input.setEllipsize(null);
+        this.input.setKeyListener(inputKeyListener);
     }
 
     private OnClickListener onClickListener() {

@@ -47,7 +47,6 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
                         .show()
             }
         }
-
         layoutInputsRoot.tiCountryPhone?.setup(countriesController)
     }
 
