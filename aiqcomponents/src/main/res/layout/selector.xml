@@ -28,10 +28,10 @@
             android:layout_height="match_parent"
             android:cursorVisible="false"
             android:ellipsize="end"
+            android:inputType="none"
+            android:scrollHorizontally="true"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:inputType="textNoSuggestions"
-            android:lines="1"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.aiq.BoldBody" />
 
