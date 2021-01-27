@@ -50,6 +50,14 @@ public class TextInput extends ConstraintLayout {
         setupAttrs(context, attrs);
         setOnClickListener(onClickListener());
 
+        input.setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus)
+                input.setSelection(0);
+            else {
+                input.setSelection(input.getText().length());
+            }
+        });
+
         TypedValue outValue = new TypedValue();
         getContext().getTheme().resolveAttribute
                 (android.R.attr.selectableItemBackground, outValue, true);
