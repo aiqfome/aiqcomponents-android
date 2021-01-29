@@ -166,6 +166,10 @@ public class TextInput extends ConstraintLayout {
 
     }
 
+    public void setSelectorEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+    }
+
     private void setEllipsized(boolean enabled) {
         this.input.setCursorVisible(!enabled);
         if (enabled) {
