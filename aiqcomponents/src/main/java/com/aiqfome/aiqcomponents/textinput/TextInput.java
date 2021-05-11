@@ -45,8 +45,6 @@ public class TextInput extends ConstraintLayout {
         inputLayout = findViewById(R.id.input);
         icon = findViewById(R.id.iv_selected_icon);
 
-        inputKeyListener = input.getKeyListener();
-
         setupAttrs(context, attrs);
         setOnClickListener(onClickListener());
 
@@ -162,8 +160,14 @@ public class TextInput extends ConstraintLayout {
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         this.input.setEnabled(enabled);
+        saveInputKeyListener();
         setEllipsized(!enabled);
 
+    }
+
+    private void saveInputKeyListener() {
+        if(input.getKeyListener() != null)
+            inputKeyListener = input.getKeyListener();
     }
 
     public void setSelectorEnabled(boolean enabled) {
