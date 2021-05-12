@@ -3,6 +3,7 @@ package com.aiqfome.aiqcomponents.textinput;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.method.DigitsKeyListener;
 import android.text.method.KeyListener;
@@ -33,6 +34,7 @@ public class TextInput extends ConstraintLayout {
     private TextInputLayout inputLayout;
     private ImageView icon;
     private KeyListener inputKeyListener;
+    private int inputType;
 
     public TextInput(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -44,8 +46,8 @@ public class TextInput extends ConstraintLayout {
         input = findViewById(R.id.et_input);
         inputLayout = findViewById(R.id.input);
         icon = findViewById(R.id.iv_selected_icon);
-
         inputKeyListener = input.getKeyListener();
+        inputType = inputKeyListener.getInputType();
 
         setupAttrs(context, attrs);
         setOnClickListener(onClickListener());
@@ -121,6 +123,7 @@ public class TextInput extends ConstraintLayout {
                         .getInt(attr, EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
 
                 input.setInputType(inputType);
+                this.inputType = inputType;
 
             } else if (attr == R.styleable.TextInput_android_selectAllOnFocus) {
                 boolean selectAllOnFocus = styledAttributes.getBoolean(attr, false);
@@ -166,8 +169,14 @@ public class TextInput extends ConstraintLayout {
 
     }
 
+
     public void setSelectorEnabled(boolean enabled) {
         super.setEnabled(enabled);
+    }
+
+    public void setInputType(int inputType) {
+        this.inputType = inputType;
+        input.setInputType(inputType);
     }
 
     private void setEllipsized(boolean enabled) {
@@ -181,6 +190,7 @@ public class TextInput extends ConstraintLayout {
 
         this.input.setEllipsize(null);
         this.input.setKeyListener(inputKeyListener);
+        this.input.setInputType(inputType);
     }
 
     private OnClickListener onClickListener() {
