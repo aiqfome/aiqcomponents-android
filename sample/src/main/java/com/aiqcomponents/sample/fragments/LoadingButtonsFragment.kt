@@ -8,33 +8,37 @@ import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.aiqcomponents.sample.R
+import com.aiqcomponents.sample.databinding.FragmentLoadingButtonsBinding
 import com.aiqfome.aiqcomponents.progressbutton.DrawableButton
 import com.aiqfome.aiqcomponents.progressbutton.ProgressButtonUtils.Companion.hideProgress
 import com.aiqfome.aiqcomponents.progressbutton.ProgressParams
 import com.aiqfome.aiqcomponents.progressbutton.showProgress
-import kotlinx.android.synthetic.main.fragment_loading_buttons.*
-import kotlinx.android.synthetic.main.fragment_loading_buttons.view.*
 
 class LoadingButtonsFragment : Fragment(R.layout.fragment_loading_buttons) {
 
+    private var _binding: FragmentLoadingButtonsBinding? = null
+    private val binding: FragmentLoadingButtonsBinding get() = _binding!!
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        _binding = FragmentLoadingButtonsBinding.bind(view)
 
         setUpClickListeners()
     }
 
     private fun setUpClickListeners() {
-        layoutLoadingButtonsRoot.btnProgressLeft?.setOnClickListener {
-            showProgressLeft(layoutLoadingButtonsRoot.btnProgressLeft)
+        binding.btnProgressLeft.setOnClickListener {
+            showProgressLeft(binding.btnProgressLeft)
         }
-        layoutLoadingButtonsRoot.btnProgressCenter?.setOnClickListener {
-            showProgressCenter(layoutLoadingButtonsRoot.btnProgressCenter)
+        binding.btnProgressCenter.setOnClickListener {
+            showProgressCenter(binding.btnProgressCenter)
         }
-        layoutLoadingButtonsRoot.btnProgressRight?.setOnClickListener {
-            showProgressRight(layoutLoadingButtonsRoot.btnProgressRight)
+        binding.btnProgressRight.setOnClickListener {
+            showProgressRight(binding.btnProgressRight)
         }
-        layoutLoadingButtonsRoot.btnProgressCustom?.setOnClickListener {
-            showProgressCustom(layoutLoadingButtonsRoot.btnProgressCustom)
+        binding.btnProgressCustom.setOnClickListener {
+            showProgressCustom(binding.btnProgressCustom)
         }
     }
 
