@@ -165,7 +165,7 @@ private fun TextView.showDrawable(
     if (transformationMethod?.javaClass?.name == "android.text.method.AllCapsTransformationMethod" ||
             transformationMethod is AllCapsTransformationMethod
     ) {
-        transformationMethod = AllCapsSpannedTransformationMethod(context)
+        transformationMethod = AllCapsSpannedTransformationMethod()
     }
 
     val drawableMargin = if (textMarginPx == DrawableButton.DEFAULT) {
