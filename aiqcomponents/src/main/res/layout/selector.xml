@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="@dimen/min_selector_width"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:context="com.aiqfome.aiqcomponents.selector.Selector">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout"
@@ -28,10 +30,10 @@
             android:layout_height="match_parent"
             android:cursorVisible="false"
             android:ellipsize="end"
-            android:inputType="none"
-            android:scrollHorizontally="true"
             android:focusable="false"
             android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:scrollHorizontally="true"
             android:singleLine="true"
             android:textAppearance="@style/TextAppearance.aiq.BoldBody" />
 
