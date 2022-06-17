@@ -1,16 +1,13 @@
 package com.aiqfome.aiqcomponents.selector
 
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.FragmentManager
-import com.aiqfome.aiqcomponents.adapters.BaseAdapter
 import com.aiqfome.aiqcomponents.adapters.CommonAdapter
 import com.aiqfome.aiqcomponents.adapters.CommonSearchableAdapter
 import com.aiqfome.aiqcomponents.adapters.OnItemClickListener
 import com.aiqfome.aiqcomponents.adapters.model.Item
+import com.aiqfome.aiqcomponents.controller.BaseController
 import com.aiqfome.aiqcomponents.sheets.ListBottomSheet
 import com.aiqfome.aiqcomponents.sheets.SearchableListBottomSheet
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 abstract class SelectorController<T> @JvmOverloads constructor(
     private val fragmentManager: FragmentManager,
@@ -20,18 +17,14 @@ abstract class SelectorController<T> @JvmOverloads constructor(
     private val shouldDismissOnSelect: Boolean = true,
     private val isFirstItemPreSelected: Boolean = false,
     private val displaySelectedSubtitle: Boolean = false,
-) {
+) : BaseController<T>() {
     private var selector: Selector? = null
-
-    private lateinit var adapter: BaseAdapter<T>
-
-    private lateinit var bottomSheet: BottomSheetDialogFragment
 
     init {
         setup()
     }
 
-    private fun setup() {
+    final override fun setup() {
         if (isSearchable) {
             adapter = CommonSearchableAdapter()
             bottomSheet = (adapter as? CommonSearchableAdapter)?.let {
@@ -52,7 +45,7 @@ abstract class SelectorController<T> @JvmOverloads constructor(
         adapter.submitList(list)
     }
 
-    private fun selectItem(item: Item<T>) {
+    override fun selectItem(item: Item<T>) {
         selector?.setSelectedItem(
             if (displaySelectedSubtitle) {
                 item.subTitle
@@ -62,32 +55,23 @@ abstract class SelectorController<T> @JvmOverloads constructor(
         onItemSelected(item.item)
     }
 
-    abstract fun onItemSelected(item: T)
-
     fun setSelector(selector: Selector?) {
         this.selector = selector
 
         if (isFirstItemPreSelected && list.isNotEmpty()) {
-            selectItem(list[0])
+            selectItem(list[FIRST_ITEM])
         }
     }
 
-    fun show() {
+    override fun show() {
         if (!bottomSheet.isAdded) {
+            val tag = title + if (isSearchable) {
+                SEARCHABLE_LIST_BOTTOM_SHEET
+            } else LIST_BOTTOM_SHEET
             bottomSheet.show(
                 fragmentManager,
-                "$title${if (isSearchable) "searchableListBottomSheet" else "listBottomSheet"}"
+                tag
             )
         }
-    }
-
-    private fun dismiss() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            bottomSheet.dismissAllowingStateLoss()
-        }, DELAY_MILLIS)
-    }
-
-    companion object {
-        private const val DELAY_MILLIS = 200L
     }
 }
