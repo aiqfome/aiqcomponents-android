@@ -16,21 +16,10 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out"
             app:popExitAnim="@android:anim/slide_out_right" />
-        <action
-            android:id="@+id/action_homeFragment_to_loadingButtonsFragment"
-            app:destination="@id/loadingButtonsFragment"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out"
-            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/inputsFragment"
         android:name="com.aiqcomponents.sample.fragments.InputsFragment"
         android:label="input components"
         tools:layout="@layout/fragment_inputs" />
-    <fragment
-        android:id="@+id/loadingButtonsFragment"
-        android:name="com.aiqcomponents.sample.fragments.LoadingButtonsFragment"
-        android:label="loading button components"
-        tools:layout="@layout/fragment_loading_buttons" />
 </navigation>
