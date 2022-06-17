@@ -54,7 +54,7 @@
 
     <style name="ShapeSelector" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">4dp</item>
+        <item name="cornerSize">@dimen/shape_selector_corner_size</item>
     </style>
 
     <style name="aiq.BottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">

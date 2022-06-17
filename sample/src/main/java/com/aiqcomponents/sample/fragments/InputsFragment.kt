@@ -9,8 +9,7 @@ import com.aiqcomponents.sample.R
 import com.aiqcomponents.sample.databinding.FragmentInputsBinding
 import com.aiqcomponents.sample.models.Country
 import com.aiqcomponents.sample.models.Region
-import com.aiqfome.aiqcomponents.adapters.BaseItem
-import com.aiqfome.aiqcomponents.adapters.IconItem
+import com.aiqfome.aiqcomponents.adapters.model.Item
 import com.aiqfome.aiqcomponents.selector.SelectorController
 import com.aiqfome.aiqcomponents.textinput.TextInputController
 import java.util.*
@@ -109,15 +108,22 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
 
     private fun setupSelectorRegion() {
         val regionList: MutableList<Region> = ArrayList()
-        val regionViews: MutableList<BaseItem<Region>> = ArrayList()
+        val regionViews: MutableList<Item.Text<Region>> = ArrayList()
+
         regionList.add(Region("Paraná", "PR"))
         regionList.add(Region("São Paulo", "SP"))
         regionList.add(Region("Mato Grosso", "MT"))
-        for (r in regionList) regionViews.add(BaseItem(r, r.name, r.acronym))
+
+        regionList.forEach { region ->
+            regionViews.add(
+                Item.Text(region, region.name, region.acronym)
+            )
+        }
+
         val selectorController: SelectorController<Region> = object : SelectorController<Region>(
             childFragmentManager,
             "Regions",
-            regionViews,
+            regionViews.toList(),
             true,
             true,
             true,
@@ -137,15 +143,22 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
 
     private fun setupSelectorCity() {
         val regionList: MutableList<Region> = ArrayList()
-        val cityViews: MutableList<BaseItem<Region>> = ArrayList()
+        val cityViewsN: MutableList<Item.Text<Region>> = ArrayList()
+
         regionList.add(Region("Maringá", ""))
         regionList.add(Region("Curitiba", ""))
         regionList.add(Region("Rio de Janeiro", ""))
-        for (r in regionList) cityViews.add(BaseItem(r, r.name, r.acronym))
+
+        regionList.forEach { r ->
+            cityViewsN.add(
+                Item.Text(r, r.name, r.acronym)
+            )
+        }
+
         val selectorController: SelectorController<Region> = object : SelectorController<Region>(
             childFragmentManager,
             "Cities",
-            cityViews,
+            cityViewsN,
             true
         ) {
             override fun onItemSelected(`object`: Region) {
