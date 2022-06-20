@@ -53,8 +53,9 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
                 "+56", "Chile"
             )
         )
-        val countriesView: MutableList<IconItem<Country>> = ArrayList()
-        for (c in countries) countriesView.add(IconItem(c, c.name, c.idd, c.icon))
+
+        val countriesView: MutableList<Item<Country>> = ArrayList()
+        for (c in countries) countriesView.add(Item.Icon(c, c.name, c.idd, c.icon))
         val countriesController: TextInputController<*> = object : TextInputController<Country>(
             childFragmentManager,
             "Countries",
@@ -62,8 +63,8 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
             true,
             true
         ) {
-            override fun onItemSelected(country: Country) {
-                Toast.makeText(context, country.name, Toast.LENGTH_SHORT)
+            override fun onItemSelected(item: Country) {
+                Toast.makeText(context, item.name, Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -71,12 +72,12 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
     }
 
     private fun setupTextInputColorAndName() {
-        val colorsView = mutableListOf<IconItem<Int?>>()
+        val colorsView = mutableListOf<Item.Icon<Int?>>()
         colorsView.add(
-            IconItem(
-                1,
-                "Blue",
-                VectorDrawableCompat.create(
+            Item.Icon(
+                item = 1,
+                title = "Blue",
+                icon = VectorDrawableCompat.create(
                     this.resources,
                     R.drawable.ic_blue,
                     requireActivity().theme
@@ -84,10 +85,10 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
             )
         )
         colorsView.add(
-            IconItem(
-                2,
-                "Red",
-                VectorDrawableCompat.create(
+            Item.Icon(
+                item = 2,
+                title = "Red",
+                icon = VectorDrawableCompat.create(
                     this.resources,
                     R.drawable.ic_red,
                     requireActivity().theme
@@ -97,10 +98,10 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
         val colorsController: TextInputController<*> = object : TextInputController<Int?>(
             childFragmentManager,
             "Colors",
-            colorsView,
+            colorsView as List<Item<Int?>>,
             false
         ) {
-            override fun onItemSelected(colorValue: Int?) {}
+            override fun onItemSelected(item: Int?) {}
         }
 
         binding.tiColorName.setup(colorsController)
@@ -129,10 +130,10 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
             true,
             true
         ) {
-            override fun onItemSelected(`object`: Region) {
+            override fun onItemSelected(item: Region) {
                 Toast.makeText(
                     requireActivity(),
-                    "Region: " + `object`.acronym,
+                    "Region: " + item.acronym,
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -161,10 +162,10 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
             cityViewsN,
             true
         ) {
-            override fun onItemSelected(`object`: Region) {
+            override fun onItemSelected(item: Region) {
                 Toast.makeText(
                     requireActivity(),
-                    "City: " + `object`.acronym,
+                    "City: " + item.acronym,
                     Toast.LENGTH_SHORT
                 ).show()
             }
