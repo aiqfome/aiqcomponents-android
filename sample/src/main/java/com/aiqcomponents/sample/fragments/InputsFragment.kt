@@ -144,14 +144,14 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
 
     private fun setupSelectorCity() {
         val regionList: MutableList<Region> = ArrayList()
-        val cityViewsN: MutableList<Item.Text<Region>> = ArrayList()
+        val cityViews: MutableList<Item.Text<Region>> = ArrayList()
 
         regionList.add(Region("Maringá", ""))
         regionList.add(Region("Curitiba", ""))
         regionList.add(Region("Rio de Janeiro", ""))
 
         regionList.forEach { r ->
-            cityViewsN.add(
+            cityViews.add(
                 Item.Text(r, r.name, r.acronym)
             )
         }
@@ -159,13 +159,13 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
         val selectorController: SelectorController<Region> = object : SelectorController<Region>(
             childFragmentManager,
             "Cities",
-            cityViewsN,
+            cityViews,
             true
         ) {
             override fun onItemSelected(item: Region) {
                 Toast.makeText(
                     requireActivity(),
-                    "City: " + item.acronym,
+                    "City: " + item.name,
                     Toast.LENGTH_SHORT
                 ).show()
             }
