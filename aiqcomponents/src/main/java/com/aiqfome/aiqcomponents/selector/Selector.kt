@@ -87,9 +87,7 @@ class Selector @JvmOverloads constructor(
 
     private fun onClickListener(): OnClickListener {
         return OnClickListener {
-            if (controller != null) {
-                controller!!.show()
-            } else {
+            controller?.show() ?: run {
                 Log.e(TAG, "no controller found, please setup Selector Component!")
             }
         }
