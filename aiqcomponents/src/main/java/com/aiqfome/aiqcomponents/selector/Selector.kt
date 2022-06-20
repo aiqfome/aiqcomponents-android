@@ -40,11 +40,9 @@ class Selector @JvmOverloads constructor(
 
             typedArray.getColor(
                 R.styleable.Selector_selectorBackgroundColor,
-                -1
-            ).let {
-                if (it > 0) {
-                    binding.inputLayout.setBackgroundColor(it)
-                }
+                ContextCompat.getColor(context, R.color.colorBackground),
+            ).run {
+                binding.inputLayout.setBackgroundColor(this)
             }
 
             typedArray.getResourceId(
