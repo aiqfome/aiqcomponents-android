@@ -2,12 +2,15 @@ package com.aiqfome.aiqcomponents.textinput
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.os.Parcel
+import android.os.Parcelable
 import android.text.InputType
 import android.text.TextUtils
 import android.text.method.DigitsKeyListener
 import android.text.method.KeyListener
 import android.util.AttributeSet
 import android.util.Log
+import android.util.SparseArray
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +23,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import com.aiqfome.aiqcomponents.R
 import com.aiqfome.aiqcomponents.databinding.TextInputBinding
+import com.aiqfome.aiqcomponents.utils.extensions.restoreChildViewStates
+import com.aiqfome.aiqcomponents.utils.extensions.saveChildViewStates
 
 class TextInput @JvmOverloads constructor(
     context: Context,
@@ -200,5 +205,57 @@ class TextInput @JvmOverloads constructor(
         private val TAG = TextInput::class.java.simpleName
     }
 
+    public override fun onSaveInstanceState(): Parcelable {
+        Log.i("SavedState", "onSaveInstanceState")
+        return SavedState(super.onSaveInstanceState()).apply {
+            childrenStates = saveChildViewStates()
+        }
+    }
 
+    public override fun onRestoreInstanceState(state: Parcelable) {
+        Log.i("SavedState", "onRestoreInstanceState")
+        when (state) {
+            is SavedState -> {
+                super.onRestoreInstanceState(state.superState)
+                state.childrenStates?.let { restoreChildViewStates(it) }
+            }
+            else -> super.onRestoreInstanceState(state)
+        }
+    }
+
+    override fun dispatchSaveInstanceState(container: SparseArray<Parcelable>) {
+        dispatchFreezeSelfOnly(container)
+    }
+
+    override fun dispatchRestoreInstanceState(container: SparseArray<Parcelable>) {
+        dispatchThawSelfOnly(container)
+    }
+
+    internal class SavedState : BaseSavedState {
+        internal var childrenStates: SparseArray<Parcelable>? = null
+
+        constructor(superState: Parcelable?) : super(superState)
+
+        @Suppress("UNCHECKED_CAST")
+        constructor(source: Parcel) : super(source) {
+            Log.i("SavedState", "Reading children children state from sparse array")
+            childrenStates = source.readSparseArray<Parcel>(javaClass.classLoader) as SparseArray<Parcelable>?
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        override fun writeToParcel(out: Parcel, flags: Int) {
+            Log.i("SavedState", "Writing children state to sparse array")
+            super.writeToParcel(out, flags)
+            out.writeSparseArray(childrenStates as SparseArray<Any>)
+        }
+
+        companion object {
+            @Suppress("UNUSED")
+            @JvmField
+            val CREATOR = object : Parcelable.Creator<SavedState> {
+                override fun createFromParcel(source: Parcel) = SavedState(source)
+                override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
+            }
+        }
+    }
 }
