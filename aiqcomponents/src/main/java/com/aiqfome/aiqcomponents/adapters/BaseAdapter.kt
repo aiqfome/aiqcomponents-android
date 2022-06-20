@@ -13,7 +13,7 @@ import com.aiqfome.aiqcomponents.adapters.view_holders.TextItemViewHolder
 import com.aiqfome.aiqcomponents.databinding.ItemlistIconSubTitleBinding
 import com.aiqfome.aiqcomponents.databinding.ItemlistSubTitleBinding
 
-internal abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class BaseAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onItemClickListener: (OnItemClickListener<T>)? = null
 
     private val diffCallback = object : DiffUtil.ItemCallback<Item<T>>() {

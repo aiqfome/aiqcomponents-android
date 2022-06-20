@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils
  * @author Bruno Cesar, bcesar.g6@gmail.com
  * @since 14/05/2020
 </T> */
-internal class TextListSearchableAdapter<T> :
+class TextListSearchableAdapter<T> :
     BaseAdapter<T>(),
     Filterable {
 
