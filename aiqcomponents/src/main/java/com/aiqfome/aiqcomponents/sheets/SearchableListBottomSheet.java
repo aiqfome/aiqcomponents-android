@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aiqfome.aiqcomponents.R;
-import com.aiqfome.aiqcomponents.adapters.CommonSearchableAdapter;
+import com.aiqfome.aiqcomponents.adapters.TextListSearchableAdapter;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -26,11 +26,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 public class SearchableListBottomSheet extends BottomSheetDialogFragment {
 
     private String title;
-    private CommonSearchableAdapter adapter;
+    private TextListSearchableAdapter adapter;
     private BottomSheetDialog dialog;
     private SearchView svSearch;
 
-    public SearchableListBottomSheet(String title, CommonSearchableAdapter adapter) {
+    public SearchableListBottomSheet(String title, TextListSearchableAdapter adapter) {
         this.title = title;
         this.adapter = adapter;
 

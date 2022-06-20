@@ -1,8 +1,8 @@
 package com.aiqfome.aiqcomponents.selector
 
 import androidx.fragment.app.FragmentManager
-import com.aiqfome.aiqcomponents.adapters.CommonAdapter
-import com.aiqfome.aiqcomponents.adapters.CommonSearchableAdapter
+import com.aiqfome.aiqcomponents.adapters.TextListAdapter
+import com.aiqfome.aiqcomponents.adapters.TextListSearchableAdapter
 import com.aiqfome.aiqcomponents.adapters.OnItemClickListener
 import com.aiqfome.aiqcomponents.adapters.model.Item
 import com.aiqfome.aiqcomponents.controller.BaseController
@@ -26,13 +26,13 @@ abstract class SelectorController<T> @JvmOverloads constructor(
 
     final override fun setup() {
         if (isSearchable) {
-            adapter = CommonSearchableAdapter()
-            bottomSheet = (adapter as? CommonSearchableAdapter)?.let {
+            adapter = TextListSearchableAdapter()
+            bottomSheet = (adapter as? TextListSearchableAdapter)?.let {
                 SearchableListBottomSheet(title, it)
             }!!
         } else {
-            adapter = CommonAdapter()
-            bottomSheet = (adapter as? CommonAdapter)?.let {
+            adapter = TextListAdapter()
+            bottomSheet = (adapter as? TextListAdapter)?.let {
                 ListBottomSheet(title, it)
             }!!
         }

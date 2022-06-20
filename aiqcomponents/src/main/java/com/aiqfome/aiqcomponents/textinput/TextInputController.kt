@@ -1,7 +1,7 @@
 package com.aiqfome.aiqcomponents.textinput
 
 import androidx.fragment.app.FragmentManager
-import com.aiqfome.aiqcomponents.adapters.CommonAdapter
+import com.aiqfome.aiqcomponents.adapters.TextListAdapter
 import com.aiqfome.aiqcomponents.adapters.OnItemClickListener
 import com.aiqfome.aiqcomponents.adapters.model.Item
 import com.aiqfome.aiqcomponents.controller.BaseController
@@ -22,7 +22,7 @@ abstract class TextInputController<T> @JvmOverloads constructor(
 
     //Icon Setup
     final override fun setup() {
-        adapter = CommonAdapter()
+        adapter = TextListAdapter()
         adapter.onItemClickListener = OnItemClickListener { item: Item<T> ->
             selectItem(item)
             if (shouldDismissOnSelect) dismiss()
