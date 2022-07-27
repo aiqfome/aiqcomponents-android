@@ -36,34 +36,36 @@ class Selector @JvmOverloads constructor(
 
     init {
         attrs?.let { attrsSet ->
-            val typedArray = context.obtainStyledAttributes(
-                attrsSet,
-                R.styleable.Selector,
-                defStyleAttr,
-                defStyleRes
-            )
-
-            typedArray.getColor(
-                R.styleable.Selector_selectorBackgroundColor,
-                ContextCompat.getColor(context, R.color.colorBackground),
-            ).run {
-                binding.inputLayout.setBackgroundColor(this)
-            }
-
-            typedArray.getResourceId(
-                R.styleable.Selector_selectorTextAppearance,
-                -1
-            ).let {
-                if (it > 0) {
-                    TextViewCompat.setTextAppearance(binding.etInput, it)
+            with(
+                context.obtainStyledAttributes(
+                    attrsSet,
+                    R.styleable.Selector,
+                    defStyleAttr,
+                    defStyleRes
+                )
+            ) {
+                this.getColor(
+                    R.styleable.Selector_selectorBackgroundColor,
+                    ContextCompat.getColor(context, R.color.colorBackground),
+                ).run {
+                    binding.inputLayout.setBackgroundColor(this)
                 }
-            }
 
-            typedArray.getString(R.styleable.Selector_selectorTitle)?.let {
-                binding.inputLayout.hint = it
-            }
+                this.getResourceId(
+                    R.styleable.Selector_selectorTextAppearance,
+                    -1
+                ).let {
+                    if (it > 0) {
+                        TextViewCompat.setTextAppearance(binding.etInput, it)
+                    }
+                }
 
-            typedArray.recycle()
+                this.getString(R.styleable.Selector_selectorTitle)?.let {
+                    binding.inputLayout.hint = it
+                }
+
+                this.recycle()
+            }
         }
 
         binding.etInput.keyListener = null

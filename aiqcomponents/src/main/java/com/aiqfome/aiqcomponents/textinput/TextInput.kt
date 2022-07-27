@@ -73,78 +73,80 @@ class TextInput @JvmOverloads constructor(
         defStyleRes: Int,
     ) {
         attrs?.let { attrsSet ->
-            val typedArray = context.obtainStyledAttributes(
-                attrsSet,
-                R.styleable.TextInput,
-                defStyleAttr,
-                defStyleRes,
-            )
-
-            typedArray.getColor(
-                R.styleable.TextInput_TextInputSelectorbackgroundColor,
-                ContextCompat.getColor(context, R.color.colorBackground),
-            ).run {
-                binding.selector.setCardBackgroundColor(this)
-            }
-
-            typedArray.getColor(
-                R.styleable.TextInput_TextInputbackgroundColor,
-                ContextCompat.getColor(context, R.color.colorBackground),
-            ).run {
-                binding.input.setBackgroundColor(this)
-            }
-
-            typedArray.getResourceId(R.styleable.TextInput_textAppearance, DEFAULT_VALUE).run {
-                if (this > DEFAULT_VALUE) {
-                    TextViewCompat.setTextAppearance(binding.etInput, this)
+            with(
+                context.obtainStyledAttributes(
+                    attrsSet,
+                    R.styleable.TextInput,
+                    defStyleAttr,
+                    defStyleRes,
+                )
+            ) {
+                this.getColor(
+                    R.styleable.TextInput_TextInputSelectorbackgroundColor,
+                    ContextCompat.getColor(context, R.color.colorBackground),
+                ).run {
+                    binding.selector.setCardBackgroundColor(this)
                 }
-            }
 
-            typedArray.getResourceId(R.styleable.TextInput_selectorDefaultIcon, DEFAULT_VALUE).run {
-                if (this > DEFAULT_VALUE) {
-                    val defaultIcon = AppCompatResources.getDrawable(getContext(), this)
-                    binding.ivSelectedIcon.setImageDrawable(defaultIcon)
+                this.getColor(
+                    R.styleable.TextInput_TextInputbackgroundColor,
+                    ContextCompat.getColor(context, R.color.colorBackground),
+                ).run {
+                    binding.input.setBackgroundColor(this)
                 }
-            }
 
-            typedArray.getString(R.styleable.TextInput_android_digits)?.let {
-                binding.etInput.keyListener = DigitsKeyListener.getInstance(it)
-            }
-
-            typedArray.getInt(
-                R.styleable.TextInput_android_inputType,
-                InputType.TYPE_CLASS_TEXT,
-            ).run {
-                binding.etInput.inputType = this
-                this@TextInput.inputType = this
-            }
-
-            typedArray.getBoolean(
-                R.styleable.TextInput_android_selectAllOnFocus,
-                false,
-            ).run {
-                binding.etInput.setSelectAllOnFocus(this)
-            }
-
-            typedArray.getString(R.styleable.TextInput_android_hint)?.let {
-                binding.input.hint = it
-            }
-
-            typedArray.getInt(R.styleable.TextInput_android_imeOptions, IME_NULL).run {
-                binding.etInput.imeOptions = this
-            }
-
-            typedArray.getString(R.styleable.TextInput_android_text)?.let {
-                binding.etInput.setText(it)
-            }
-
-            typedArray.getDimension(R.styleable.TextInput_textSize, 0f).run {
-                if (this > 0) {
-                    binding.etInput.setTextSize(TypedValue.COMPLEX_UNIT_PX, this)
+                this.getResourceId(R.styleable.TextInput_textAppearance, DEFAULT_VALUE).run {
+                    if (this > DEFAULT_VALUE) {
+                        TextViewCompat.setTextAppearance(binding.etInput, this)
+                    }
                 }
-            }
 
-            typedArray.recycle()
+                this.getResourceId(R.styleable.TextInput_selectorDefaultIcon, DEFAULT_VALUE).run {
+                    if (this > DEFAULT_VALUE) {
+                        val defaultIcon = AppCompatResources.getDrawable(getContext(), this)
+                        binding.ivSelectedIcon.setImageDrawable(defaultIcon)
+                    }
+                }
+
+                this.getString(R.styleable.TextInput_android_digits)?.let {
+                    binding.etInput.keyListener = DigitsKeyListener.getInstance(it)
+                }
+
+                this.getInt(
+                    R.styleable.TextInput_android_inputType,
+                    InputType.TYPE_CLASS_TEXT,
+                ).run {
+                    binding.etInput.inputType = this
+                    this@TextInput.inputType = this
+                }
+
+                this.getBoolean(
+                    R.styleable.TextInput_android_selectAllOnFocus,
+                    false,
+                ).run {
+                    binding.etInput.setSelectAllOnFocus(this)
+                }
+
+                this.getString(R.styleable.TextInput_android_hint)?.let {
+                    binding.input.hint = it
+                }
+
+                this.getInt(R.styleable.TextInput_android_imeOptions, IME_NULL).run {
+                    binding.etInput.imeOptions = this
+                }
+
+                this.getString(R.styleable.TextInput_android_text)?.let {
+                    binding.etInput.setText(it)
+                }
+
+                this.getDimension(R.styleable.TextInput_textSize, 0f).run {
+                    if (this > 0) {
+                        binding.etInput.setTextSize(TypedValue.COMPLEX_UNIT_PX, this)
+                    }
+                }
+
+                this.recycle()
+            }
         }
     }
 
