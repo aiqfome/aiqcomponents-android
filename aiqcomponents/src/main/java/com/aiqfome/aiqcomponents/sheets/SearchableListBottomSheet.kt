@@ -101,4 +101,9 @@ class SearchableListBottomSheet(
         return dialog!!
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        _binding = null
+    }
 }
