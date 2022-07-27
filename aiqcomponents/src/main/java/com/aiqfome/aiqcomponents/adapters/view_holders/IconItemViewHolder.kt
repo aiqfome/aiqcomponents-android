@@ -1,6 +1,6 @@
 package com.aiqfome.aiqcomponents.adapters.view_holders
 
-import android.view.View
+import androidx.core.view.isVisible
 import com.aiqfome.aiqcomponents.adapters.model.Item
 import com.aiqfome.aiqcomponents.databinding.ItemlistIconSubTitleBinding
 
@@ -11,9 +11,8 @@ internal class IconItemViewHolder(
         (item as? Item.Icon)?.let {
             binding.viewObject = item
 
-            binding.tvSubtitle.visibility = if (item.subTitle.isNullOrEmpty()) {
-                View.INVISIBLE
-            } else View.VISIBLE
+            binding.tvSubtitle.isVisible = !item.subTitle.isNullOrEmpty()
+
             binding.ivIcon.setImageDrawable(item.icon)
             binding.executePendingBindings()
         }
