@@ -66,7 +66,6 @@ class TextInput @JvmOverloads constructor(
             }
     }
 
-
     private fun setupAttrs(
         context: Context,
         attrs: AttributeSet?,
@@ -95,14 +94,14 @@ class TextInput @JvmOverloads constructor(
                 binding.input.setBackgroundColor(this)
             }
 
-            typedArray.getResourceId(R.styleable.TextInput_textAppearance, -1).run {
-                if (this > 0) {
+            typedArray.getResourceId(R.styleable.TextInput_textAppearance, DEFAULT_VALUE).run {
+                if (this > DEFAULT_VALUE) {
                     TextViewCompat.setTextAppearance(binding.etInput, this)
                 }
             }
 
-            typedArray.getResourceId(R.styleable.TextInput_selectorDefaultIcon, -1).run {
-                if (this > -1) {
+            typedArray.getResourceId(R.styleable.TextInput_selectorDefaultIcon, DEFAULT_VALUE).run {
+                if (this > DEFAULT_VALUE) {
                     val defaultIcon = AppCompatResources.getDrawable(getContext(), this)
                     binding.ivSelectedIcon.setImageDrawable(defaultIcon)
                 }
@@ -203,6 +202,8 @@ class TextInput @JvmOverloads constructor(
 
     companion object {
         private val TAG = TextInput::class.java.simpleName
+
+        private const val DEFAULT_VALUE = -1
     }
 
     public override fun onSaveInstanceState(): Parcelable {
@@ -239,7 +240,8 @@ class TextInput @JvmOverloads constructor(
         @Suppress("UNCHECKED_CAST")
         constructor(source: Parcel) : super(source) {
             Log.i("SavedState", "Reading children children state from sparse array")
-            childrenStates = source.readSparseArray<Parcel>(javaClass.classLoader) as SparseArray<Parcelable>?
+            childrenStates =
+                source.readSparseArray<Parcel>(javaClass.classLoader) as SparseArray<Parcelable>?
         }
 
         @Suppress("UNCHECKED_CAST")
