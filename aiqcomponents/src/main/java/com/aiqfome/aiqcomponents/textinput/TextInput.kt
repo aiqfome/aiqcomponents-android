@@ -207,14 +207,12 @@ class TextInput @JvmOverloads constructor(
     }
 
     public override fun onSaveInstanceState(): Parcelable {
-        Log.i("SavedState", "onSaveInstanceState")
         return SavedState(super.onSaveInstanceState()).apply {
             childrenStates = saveChildViewStates()
         }
     }
 
     public override fun onRestoreInstanceState(state: Parcelable) {
-        Log.i("SavedState", "onRestoreInstanceState")
         when (state) {
             is SavedState -> {
                 super.onRestoreInstanceState(state.superState)
@@ -239,14 +237,12 @@ class TextInput @JvmOverloads constructor(
 
         @Suppress("UNCHECKED_CAST")
         constructor(source: Parcel) : super(source) {
-            Log.i("SavedState", "Reading children children state from sparse array")
             childrenStates =
                 source.readSparseArray<Parcel>(javaClass.classLoader) as SparseArray<Parcelable>?
         }
 
         @Suppress("UNCHECKED_CAST")
         override fun writeToParcel(out: Parcel, flags: Int) {
-            Log.i("SavedState", "Writing children state to sparse array")
             super.writeToParcel(out, flags)
             out.writeSparseArray(childrenStates as SparseArray<Any>)
         }
