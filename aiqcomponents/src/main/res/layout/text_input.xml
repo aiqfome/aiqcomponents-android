@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.aiqfome.aiqcomponents.textinput.TextInput">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/selector"
         style="@style/TextInputSelector"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:minWidth="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:minWidth="30dp"
         app:layout_constraintBottom_toBottomOf="@id/input"
         app:layout_constraintEnd_toStartOf="@id/input"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,12 +34,14 @@
                 android:layout_marginEnd="10dp"
                 android:maxWidth="30dp"
                 android:maxHeight="30dp"
-                app:srcCompat="@drawable/ic_default_icon" />
+                app:srcCompat="@drawable/ic_default_icon"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_chevron_down" />
+                app:srcCompat="@drawable/ic_chevron_down"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
@@ -66,10 +70,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/nunito_font_bold"
+            android:maxLines="1"
             android:singleLine="true"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:maxLines="1" />
+            android:textStyle="bold" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

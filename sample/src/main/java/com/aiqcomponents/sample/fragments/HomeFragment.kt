@@ -29,10 +29,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             layoutManager = LinearLayoutManager(requireActivity())
             setHasFixedSize(true)
             addItemDecoration(
-                    DividerItemDecoration(
-                            context,
-                            DividerItemDecoration.VERTICAL
-                    )
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
             )
         }
     }
