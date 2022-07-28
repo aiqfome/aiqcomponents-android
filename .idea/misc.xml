@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.2572463768115942" />
+        <entry key="aiqcomponents/src/main/res/drawable/rounded_backgroun_disable.xml" value="0.2685" />
+        <entry key="aiqcomponents/src/main/res/drawable/rv_divider.xml" value="0.2685" />
+        <entry key="aiqcomponents/src/main/res/layout/itemlist_icon_sub_title.xml" value="0.19895833333333332" />
+        <entry key="aiqcomponents/src/main/res/layout/itemlist_sub_title.xml" value="0.3416666666666667" />
+        <entry key="aiqcomponents/src/main/res/layout/layout_bottom_sheet_list.xml" value="0.3697916666666667" />
+        <entry key="aiqcomponents/src/main/res/layout/layout_bottom_sheet_searchable_list.xml" value="0.3697916666666667" />
+        <entry key="aiqcomponents/src/main/res/layout/selector.xml" value="0.3697916666666667" />
+        <entry key="aiqcomponents/src/main/res/layout/text_input.xml" value="0.3416666666666667" />
+        <entry key="aiqcomponents/src/main/res/layout/text_input_linear.xml" value="0.33" />
+        <entry key="sample/src/main/res/drawable/ripple_selector.xml" value="0.2685" />
+        <entry key="sample/src/main/res/layout/activity_main.xml" value="0.3697916666666667" />
+        <entry key="sample/src/main/res/layout/component_list_item.xml" value="0.19895833333333332" />
+        <entry key="sample/src/main/res/layout/fragment_home.xml" value="0.19895833333333332" />
+        <entry key="sample/src/main/res/layout/fragment_inputs.xml" value="0.3416666666666667" />
+        <entry key="sample/src/main/res/layout/fragment_loading_buttons.xml" value="0.3697916666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

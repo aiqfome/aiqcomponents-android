@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="@dimen/min_selector_width"
-    android:orientation="horizontal">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.aiqfome.aiqcomponents.selector.Selector">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout"
-        style="@style/Selector"
+    <LinearLayout
+        android:id="@+id/ll_input_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:minWidth="@dimen/min_selector_width"
-        android:minHeight="@dimen/text_input_height"
-        android:padding="0dp"
-        app:errorEnabled="false">
+        android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_input"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
+            style="@style/Selector"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:cursorVisible="false"
-            android:ellipsize="end"
-            android:inputType="none"
-            android:scrollHorizontally="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:singleLine="true"
-            android:textAppearance="@style/TextAppearance.aiq.BoldBody" />
+            android:minWidth="@dimen/min_selector_width"
+            android:minHeight="@dimen/text_input_height"
+            android:padding="0dp"
+            app:errorEnabled="false">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cursorVisible="false"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.aiq.BoldBody" />
 
-</LinearLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+</layout>
