@@ -174,4 +174,9 @@ class InputsFragment : Fragment(R.layout.fragment_inputs) {
         binding.selectorCity.setup(selectorController)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        _binding = null
+    }
 }
