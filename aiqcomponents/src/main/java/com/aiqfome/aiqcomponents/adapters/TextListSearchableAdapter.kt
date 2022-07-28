@@ -26,7 +26,7 @@ class TextListSearchableAdapter<T> :
     override fun submitList(list: List<Item<T>>) {
         differ.submitList(list)
 
-        if (originalList == null) {
+        originalList ?: run {
             originalList = list
         }
 
@@ -50,8 +50,8 @@ class TextListSearchableAdapter<T> :
                     is Item.Text -> {
                         val filterableSubtitleString = StringUtils.stripAccents(item.subTitle)
 
-                        if (filterableString.lowercase().contains(filterString)
-                            || filterableSubtitleString.lowercase().contains(filterString)
+                        if (filterableString.lowercase().contains(filterString) ||
+                            filterableSubtitleString.lowercase().contains(filterString)
                         ) {
                             filteredList.add(item)
                         }
