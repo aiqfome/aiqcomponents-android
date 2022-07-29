@@ -50,8 +50,8 @@ class TextListSearchableAdapter<T> :
                     is Item.Text -> {
                         val filterableSubtitleString = StringUtils.stripAccents(item.subTitle)
 
-                        if (filterableString.lowercase().contains(filterString) ||
-                            filterableSubtitleString.lowercase().contains(filterString)
+                        if (filterableString?.lowercase()?.contains(filterString) == true ||
+                            filterableSubtitleString?.lowercase()?.contains(filterString) == true
                         ) {
                             filteredList.add(item)
                         }
